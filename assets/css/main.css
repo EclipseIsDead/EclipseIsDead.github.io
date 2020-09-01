@@ -93,29 +93,31 @@
 
 /*Content Icons*/
 
+/*
 .cbp-ig-icon-brain::before {
 	content: "\f5dc";
 }
 
-.cbp-ig-icon-ribbon::before {
+.cbp-ig-icon-front::before {
 	content: "\e001";
 }
 
-.cbp-ig-icon-milk::before {
-	content: "e002";
+.cbp-ig-icon-back::before {
+	content: "\e002";
 }
 
-.cbp-ig-icon-whippy::before {
-	content: "e003";
+.cbp-ig-icon-art::before {
+	content: "\e003";
 }
 
-.cbp-ig-icon-spectacles::before {
-	content: "e004";
+.cbp-ig-icon-comp::before {
+	content: "\e004";
 }
 
-.cbp-ig-icon-doumbek::before {
-	content: "e007";
+.cbp-ig-icon-math::before {
+	content: "\e007";
 }
+*/
 
 /* title element */
 .cbp-ig-grid .cbp-ig-title {
