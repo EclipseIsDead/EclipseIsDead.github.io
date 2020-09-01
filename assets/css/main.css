@@ -8,6 +8,10 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
 
+/*
+	Gallery CSS formating for the bottom of index.html.
+*/
+
 @font-face {
 	font-family: 'anyoldicon';
 	src:url('../fonts/anyoldicon/anyoldicon.eot');
@@ -60,7 +64,7 @@
 .cbp-ig-grid li > a {
 	display: block;
 	height: 100%;
-	color: #47a3da;
+	color: #47a3da; /*Highlight colour?*/
 	-webkit-transition: background 0.2s;
 	-moz-transition: background 0.2s;
 	transition: background 0.2s;
@@ -87,27 +91,29 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-.cbp-ig-icon-shoe:before {
-	content: "e000";
+/*Content Icons*/
+
+.cbp-ig-icon-brain::before {
+	content: "\f5dc";
 }
 
-.cbp-ig-icon-ribbon:before {
-	content: "e001";
+.cbp-ig-icon-ribbon::before {
+	content: "\e001";
 }
 
-.cbp-ig-icon-milk:before {
+.cbp-ig-icon-milk::before {
 	content: "e002";
 }
 
-.cbp-ig-icon-whippy:before {
+.cbp-ig-icon-whippy::before {
 	content: "e003";
 }
 
-.cbp-ig-icon-spectacles:before {
+.cbp-ig-icon-spectacles::before {
 	content: "e004";
 }
 
-.cbp-ig-icon-doumbek:before {
+.cbp-ig-icon-doumbek::before {
 	content: "e007";
 }
 
@@ -242,6 +248,8 @@
 		margin-top: 20px;
 	}
 }
+
+/*End of gallery formatting.*/
 
 /* Reset */
 
