@@ -1,5 +1,22 @@
+  @font-face{
+    font-family: 'Apple II Screen Typeface Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Apple II Screen Typeface Regular'), url('AppleIiScreenTypeface-2aP3.woff') format('woff');
+  }
+  
+  h1{
+    font-family: 'Apple II Screen Typeface Regular'; 
+    color: #33FF33;
+  }
+
+  a{
+    font-family: 'Apple II Screen Typeface Regular';
+    color: #33FF33;
+  }
+  
   head {
-    background-color: rgb(139, 172, 15);
+    background-color:  #282828;
   }
 
   .banner{
@@ -8,28 +25,21 @@
   }
 
   .navbar{
-    background-color: rgb(139, 172, 15);
+    background-color: #282828;
     overflow: hidden;
   }
 
-  .nav_button img {
+  .nav_button {
     width: auto;
-    height: 60px;
+    height: auto;
     line-height: 1em;
     display: inline-block;
     text-decoration: none;
-    padding: px;
-    margin: 10px;
-  }
-
-  .nav_button:hover{
-
-  }
-
-  .nav_button:active{
-
+    background-color: #33FF33;
+    margin: 0px 20px;
+    color: #282828;
   }
 
   body {
-    background-color: rgb(139, 172, 15);
+    background-color:  #282828;
   }
