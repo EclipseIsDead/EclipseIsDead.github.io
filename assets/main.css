@@ -34,10 +34,13 @@
     height: auto;
     line-height: 1em;
     display: inline-block;
-    text-decoration: none;
-    background-color: #33FF33;
+    text-decoration: none; 
     margin: 0px 20px;
+  }
+
+  .nav_button:hover{
     color: #282828;
+    background-color: #33FF33;
   }
 
   body {
