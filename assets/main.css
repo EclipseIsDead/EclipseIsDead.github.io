@@ -4,34 +4,56 @@
     font-weight: normal;
     src: local('Apple II Screen Typeface Regular'), url('AppleIiScreenTypeface-2aP3.woff') format('woff');
   }
+
+  :root {
+    --black: #282828;
+    --soft-black: #1d2021;
+    --red: #cc241d;
+    --blue: #458588;
+    --green: #98971a;
+    --soft-green: #b8bb26;
+    --orange: #d65d0e;
+    --aqua: #689d6a;
+    --soft-aqua: #8ec07c;
+  }
+
+  #red {color: var(--red);}
+  #blue {color: var(--blue);}
+  #green {color: var(--green);}
+  #aqua {color: var(--aqua);}
+  #soft-aqua {color: var(--soft-aqua);}
   
   h1 {
     font-family: 'Apple II Screen Typeface Regular'; 
-    color: #33FF33;
+    color: var(--aqua);
+  }
+
+  .banner{
+    margin-left: 25px;
   }
 
   a {
     font-family: 'Apple II Screen Typeface Regular';
-    color: #33FF33;
+    color: var(--aqua);
   }
   
   head {
-    background-color:  #282828;
+    background-color:  var(--soft-black);
   }
 
   body {
-    background-color:  #282828;
+    background-color:  var(--soft-black);
   }
 
   p {
-    color: #33FF33;
+    color: var(--aqua);
     font-family: 'Apple II Screen Typeface Regular';
     padding: 15px, 20px;
   }
 
   div {
     font-family: 'Apple II Screen Typeface Regular'; 
-    color: #33FF33;
+    color: var(--aqua);
   }
 
   .cursor {
@@ -44,7 +66,7 @@
   }
 
   .navbar {
-    background-color: #282828;
+    background-color: var(--soft-black);
     overflow: hidden;
   }
 
@@ -59,12 +81,12 @@
   }
 
   .nav_button:hover {
-    color: #282828;
-    background-color: #33FF33;
+    color: var(--black);
+    background-color: var(--green);
   }
   
   .news {
-    background-color: #282828;
+    background-color: var(--soft-black);
     width: 200px;
     height: 400px;
     overflow: scroll;
@@ -72,7 +94,7 @@
   }
 
   #box {
-    background-color: #282828;
+    background-color: var(--black);
     border: dashed;
   } 
 
@@ -88,8 +110,9 @@
 
   hr.dashed {
     border: none;
-    border-top: 3px dashed #33FF33;
-    margin-top: 15px;
+    border-top: 3px dashed var(--orange);
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   div.content p{
@@ -103,7 +126,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #282828;
-    color: #33FF33;
+    background-color: var(--soft-black);
+    color: var(--green);
     text-align: center;
   }

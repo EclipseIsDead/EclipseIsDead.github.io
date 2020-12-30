@@ -1,5 +1,5 @@
 $(window).on('load', function () {
-    make_border_style('#box', '+=+| |+=+', '#33FF33');
+    make_border_style('#box', '+=+| |+=+', '#928374');
 });
 
 function make_border_style(selector, text, color, $parent) {
