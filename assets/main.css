@@ -127,7 +127,12 @@
     background-color: var(--black);
     border: dashed;
     width: 750px;
-  } 
+  }
+
+  div.maincontent{
+    position: relative;
+    width: 850px;
+  }
 
   div.content{
     position: relative;
