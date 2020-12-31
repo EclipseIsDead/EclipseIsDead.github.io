@@ -111,6 +111,12 @@
     margin-left: 18px;
     margin-right: 15px;
     line-height: 1.2;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
   }
 
   #box {
