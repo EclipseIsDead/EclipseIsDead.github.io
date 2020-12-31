@@ -1,6 +1,7 @@
 $(window).on('load', function () {
     make_border_style('#box', '+=+| |+=+', '#928374');
-    make_border_style('#cite', '#-#| |#-#', '#928374')
+    make_border_style('#cite', '#-#| |#-#', '#928374');
+    make_border_style('#status', '#/#| |#/#', '#928374');
 });
 
 function make_border_style(selector, text, color, $parent) {

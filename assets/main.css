@@ -19,10 +19,15 @@
     --soft-aqua: #8ec07c;
     --purple: #b16286;
     --soft-purple: #d3869b;
+    --gray: #a89984;
+    --yellow: #d79921;
   }
 
   #red {color: var(--red);}
+  #gray {color: var(--gray);}
   #blue {color: var(--blue);}
+  #yellow {color: var(--yellow);}
+  #soft-blue {color: var(--soft-blue);}
   #green {color: var(--green);}
   #soft-green {color: var(--soft-green);}
   #aqua {color: var(--aqua);}
@@ -116,6 +121,12 @@
   #cite {
     background-color: var(--black);
     border: dashed;
+  } 
+
+  #status {
+    background-color: var(--black);
+    border: dashed;
+    width: 750px;
   } 
 
   div.content{
