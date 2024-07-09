@@ -1,78 +1,72 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
-	<head> 
-		<title>Siddarth's Site</title>
-		<link rel="icon" type="image/png" href="assets/favicon.png"/>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="assets/main.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="assets/main.js"></script>
-		<meta name="description" content="Nothing to see here, just a normal personal website!" />
-		<meta name="title" property="og:title" content="Siddarth's Website" />
-		<meta name="image" property="og:image" content="https://wallpapercave.com/wp/wp6929104.png" />
-		<div class="banner" style="position: center top">
-			<h1><span id="red">~/</span> <span id="blue">&gt;</span> <span id="purple">echo</span> welcome <span class="cursor">_</span></h1>
-		</div>
-		<div class="navbar">
-			<a href="#" class="nav_button" title="Home">&lt; home &gt;</a>
-			<a href="about.html" class="nav_button" title="About">&lt; about &gt;</a>
-			<a href="projects.html" class="nav_button" title="Projects">&lt; projects &gt;</a>
-			<a href="experience.html" class="nav_button" title="Experience">&lt; experience &gt;</a>
-		</div>
-		<hr class="dashed">
-	</head>
-		<body>
-		<div class="container">
-			<div class="maincontent">
-				<h2><span id="red">~/</span> <span id="green">main</span> <span id="blue">&gt;</span></h2>
-				<p class="big">
-					I'm <span id="soft-blue">Siddarth</span>, and this is my website. <br>
-					Reach me through <span id="yellow">e-mail</span> by filling the blanks at <span id="soft-purple">s dd rth.dagar@m il.utor nto.ca</span>. <br>
-					I am currently:
-				</p>
-				<p id="status">
-					scouring for internships
-				</p>
-				<p class="big">
-					If you have any <span id="soft-red">suggestions, questions, or concerns</span>... send them!
-				</p>
-			</div>
-			<p id="box" class="news">
-				<span id="red">~/</span> <span id="green">news</span> <span id="blue">&gt;</span>
-				<br> <br>
-				<span id="blue">2/12/21</span> <span id="red">></span> <span id="green">e4: </span> <br>
-				The <span id="purple">e4 chess engine</span> has been put on the <span id="gray">shelf</span>. This is for the
-				<span id="red">forseeable future</span>, due to various reasons.
-				<br> <br>
-				<span id="blue">1/14/21</span> <span id="red">></span> <span id="green">GRADES: </span> <br>
-				Completed my <span id="purple">first semester</span> with a <span id="red">4.0</span>. Hopefully the 
-				<span id="yellow">next</span> one goes just as well.
-				<br> <br>
-				<span id="blue">12/31/20</span> <span id="red">></span> <span id="green">NEW YEARS: </span> <br>
-				I have completed my <span id="purple">personal website overhaul</span>, 
-				starting from scratch and working to design <span id="yellow">something nice</span>.
-				This website is an <span id="gray">Apple II Terminal</span> styled personal website, using the
-				<a href="https://github.com/morhetz/gruvbox" target="_blank" id="soft-purple">gruvbox</a> 
-				aesthetic. I'm looking forward to 2021
-				<span id="soft-red">(</span>
-				 which is hopefully better than 2020...
-				<span id="soft-red">)</span>
-				<br> <br>
-				<span id="blue">09/05/20</span> <span id="red">></span> <span id="green">PROJECT NORTH STAR ARCHIVED: </span> <br>
-				The <span id="soft-purple">augmented reality project</span>, undertaken at my school to 
-				foster more innovation in a high school setting, was cut short by coronavirus. Having graduated it seems 
-				<span id="soft-red">unlikely</span> that I will be returning to continue development. 
-				Who knows, I <span id="gray">may come back to it</span> at a later date to <span id="blue">develop</span> and pick up where I left out.
-			</p>
-		</div>
-		<!-- Footer -->
-			<footer id="footer">
-				<div>
-					<a class="footelem" target="_blank" href="https://github.com/EclipseIsDead">&gt; Github &lt;</a>
-					<a class="footelem" target="_blank" href="https://www.linkedin.com/in/siddarth-dagar">&gt; LinkedIn &lt;</a>				</div>
-				<div class="copyright">
-					&copy; All rights reserved.
-				</div>
-			</footer>
-	</body>
+    <head>
+        <title>Siddarth's Website</title>
+        <link rel="icon" type="image/png" href="assets/favicon.png" />
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h2>Siddarth Dagar</h2>
+        <hr />
+        <div>
+            I'm a 4th year Computer Science Specialist + Math Major @ the
+            University of Toronto. Reach me by filling in the blank @
+            <b>sidmcheath_gmail.com</b>. I build stuff in C/Assembly, CUDA,
+            Python, TS and Rust. Currently learning how to use WebAssembly. The
+            "stuff" in question is a mix of NLP, Computer Vision, and math. In
+            that same vein, I'm interested in compression, kernel programming,
+            and... math. In my spare time, I contribute to open source projects
+            and write retro games in MIPS Assembly.
+        </div>
+        <h3>Cool Stuff I've Done</h3>
+        <ul>
+            <li>
+                Check out
+                <a href="https://github.com/UTMIST/3DResNet">this</a> 3D ResNet
+                implementation from my first year, using
+                <a href="https://arxiv.org/abs/2004.04968">this</a> paper
+            </li>
+            <li>
+                <a href="https://github.com/EclipseIsDead/tetra.c">Here's</a> a
+                spinning ascii tetrahedron, inspired by the infamous donut.c
+                (ignore my poor obfuscation attempt please)
+            </li>
+            <li>
+                A brief
+                <a href="https://github.com/EclipseIsDead/neuralink">attempt</a>
+                and analysis of the neuralink compression challenge
+            </li>
+            <li>
+                A zpaq 1.10 encoder/decoder architecture for compression written
+                in MIPS assembly over
+                <a href="https://github.com/EclipseIsDead/asym">here</a>
+            </li>
+            <li>more to come...</li>
+        </ul>
+        <h3>Cooler Stuff I've Done</h3>
+        <ul>
+            <li>
+                Wrote software for charities: a
+                <a href="https://github.com/uoftblueprint/homes-for-heroes"
+                    >veteran's org</a
+                >
+                and
+                <a href="https://github.com/uoftblueprint/tces-2022"
+                    >Toronto Community Employment Services</a
+                >
+            </li>
+            <li>
+                Talked to Stephen Wolfram about the future of quantum computing
+                (he did not have a high opinion of it)
+            </li>
+            <li>
+                Worked through
+                <a
+                    href="https://wiki.math.ntnu.no/_media/ma8107/2014h/rordam_m.pdf"
+                    >Rordam's</a
+                >
+                text on C*-algebras and K-Theory
+            </li>
+        </ul>
+    </body>
 </html>
