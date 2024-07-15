@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Siddarth's Website</title>
+        <link rel="icon" type="image/png" href="../assets/favicon.png" />
+        <link rel="stylesheet" href="../assets/style.css" />
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>Asteroids.asm</h1>
+        <h2>July 15, 2024</h2>
+        <hr />
+        <div>
+            Working in assembly, especially with other people is pretty fun but
+            a lot harder than you expect. Without a strict convention on how to
+            work with registers, it's very easy to ruin a project. Here are some
+            quick takeaways:
+        </div>
+        <ul>
+            <li>
+                <b>Use a decent IDE</b> - It's hard to run assembly programs,
+                especially if they use a bitmap display, without explaining the
+                setup. My go-to is MARS IDE, but you can use whatever you want.
+            </li>
+            <li>
+                <b>Comment every line</b> - I mean legit every line, unless it's
+                so self explanatory that a child could figure it out. Here's an
+                example:
+                <pre>
+                    <code>
+                        move $a0, $t0 # need to check this value for user!
+                        li $v0,1 # syscall for print_int
+                        syscall
+                    </code>
+                </pre>
+            </li>
+            <li>
+                <b>Use a debugger</b> - I've watched people stare at their code
+                like it's gonna magically start working, dropping an hour on
+                using their brain as an interpreter before finally using a
+                debugger. It's assembly. Save yourself the time. Go line by
+                line. You don't have a choice.
+            </li>
+        </ul>
+    </body>
+</html>
