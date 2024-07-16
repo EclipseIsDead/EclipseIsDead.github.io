@@ -3,3 +3,28 @@ body {
     margin-right: 50px;
     margin-top: 10px;
 }
+
+div {
+    font-size: 18px;
+}
+
+li {
+    font-size: 18px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.image-container {
+    flex-shrink: 0;
+}
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+.text-container > div {
+    margin-bottom: 1em;
+}
