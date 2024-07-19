@@ -28,3 +28,10 @@ li {
 .text-container > div {
     margin-bottom: 1em;
 }
+
+.demo-container {
+    display: flex;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
