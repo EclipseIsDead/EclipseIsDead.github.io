@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Siddarth's Website</title>
+        <link rel="icon" type="image/png" href="../assets/favicon.png" />
+        <link rel="stylesheet" href="../assets/style.css" />
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>D&D 5e Dungeon Planner</h1>
+        <h2>February 6, 2025</h2>
+        <hr />
+        <div>
+            After a bit of a coding hiatus, a few friends and I decided to write
+            an open source dungeon planner with C++ to move our campaign online.
+            All the popular options we looked at were either subscription based
+            or just not very good. The base repo was copied from my terrible
+            little fluid simulator because I love the shader class and makefile
+            setup.
+        </div>
+        <br />
+        <div>
+            The core setup is similar to Dwarf Fortress, with a top-down z-slice
+            of the map being rendered at any given moment. This tool is meant to
+            be used by the DM and screen-shared to players with built in
+            initiative tracking and simple saving/loading of maps. The UI will
+            be presented with a seperate dialog window that updates class
+            instances/global variables before the game loop renders the updates.
+        </div>
+    </body>
+</html>

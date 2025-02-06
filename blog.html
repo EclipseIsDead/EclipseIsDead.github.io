@@ -9,6 +9,7 @@
     <body>
         <script>
             (async () => {
+            // only appears after push to master
             const response = await fetch('https://api.github.com/repos/EclipseIsDead/EclipseIsDead.github.io/contents/blog?ref=master');
             const data = await response.json();
             // console.log(data);
