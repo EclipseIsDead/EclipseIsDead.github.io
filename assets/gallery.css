@@ -4,9 +4,30 @@ body {
     margin-top: 10px;
 }
 
+.code-manifold {
+    clear: both;
+    margin: 18px auto 24px;
+    max-width: 960px;
+}
+
+.code-manifold canvas {
+    background: #08090c;
+    border: 1px solid #242936;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
 .hoverbox {
     cursor: default;
     list-style: none;
+}
+
+@media (max-width: 720px) {
+    body {
+        margin-left: 18px;
+        margin-right: 18px;
+    }
 }
 
 .hoverbox a {
