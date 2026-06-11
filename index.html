@@ -5,31 +5,26 @@
         <link rel="icon" type="image/png" href="assets/favicon.png" />
         <link rel="stylesheet" href="assets/style.css" />
         <meta charset="utf-8" />
-        <!-- SEO Meta Tags -->
         <meta
             name="description"
-            content="Personal website of Siddarth Dagar, a graduated Computer Science Specialist and Math Major at the University of Toronto. Explore my projects in C/C++, Assembly, CUDA, Python, TS, and Rust."
+            content="Personal website of Siddarth Dagar, a systems engineer focused on AI infrastructure, developer tooling, distributed systems, type systems, and performance engineering."
         />
         <meta
             name="keywords"
-            content="Siddarth Dagar, Computer Science, Mathematics, University of Toronto, AI, ML, NLP, Computer Vision, C, C++, Assembly, Python, Open Source"
+            content="Siddarth Dagar, Systems Engineering, AI Infrastructure, Developer Tooling, Distributed Systems, Type Systems, Performance Engineering"
         />
         <meta name="author" content="Siddarth Dagar" />
-
-        <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://eclipseisdead.github.io/" />
+        <meta property="og:title" content="Siddarth Dagar" />
         <meta
-            property="og:title"
-            content="Siddarth Dagar - Computer Science Specialist & Math Major"
+            property="og:description"
+            content="I build systems that make other engineers more productive."
         />
-        <meta property="og:description" content="I build stuff." />
         <meta
             property="og:image"
             content="https://eclipseisdead.github.io/assets/me.png"
         />
-
-        <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
         <meta
             property="twitter:url"
@@ -37,9 +32,12 @@
         />
         <meta
             property="twitter:title"
-            content="Siddarth Dagar - Computer Science Specialist & Math Major"
+            content="Siddarth Dagar - Systems Engineer"
         />
-        <meta property="twitter:description" content="I build stuff." />
+        <meta
+            property="twitter:description"
+            content="I build systems that make other engineers more productive."
+        />
         <meta
             property="twitter:image"
             content="https://eclipseisdead.github.io/assets/me.png"
@@ -47,131 +45,272 @@
     </head>
     <body>
         <h1>Siddarth Dagar (@EclipseIsDead)</h1>
-        <hr />
-        <div>
+
+        <p>
             <a href="blog.html">Blog</a> | <a href="demo.html">Demos</a> |
             <a href="https://x.com/siddarf">X</a> |
             <a href="https://github.com/EclipseIsDead">Github</a> |
             <a href="https://www.linkedin.com/in/siddarth-dagar/">LinkedIn</a>
-        </div>
+        </p>
+
         <hr />
-        <div class="container">
-            <div class="image-container">
-                <img
-                    src="assets/me.png"
-                    alt="Siddarth Dagar - Computer Science Student"
-                    width="527"
-                    height="701"
-                    style="max-width: 260px; height: auto"
-                />
-            </div>
-            <div class="text-container">
-                <div>
-                    I'm a newgrad Computer Science Specialist + Math Major @ the
-                    University of Toronto. Reach me by filling in the blank @
-                    <b>sidmcheath_gmail.com</b>. I build stuff in C/C++,
-                    Assembly, CUDA, Python, TS and Rust. Currently learning Zig
-                    and how to use WebAssembly. The "stuff" in question is a mix
-                    of NLP, Computer Vision, and math. In that same vein, I'm
-                    interested in compression, kernel programming, and... math.
-                    In my spare time, I contribute to open source projects, bug
-                    hunt and write retro games in MIPS Assembly.
-                </div>
-                <div>
-                    Currently working on implementing an interpretation of
-                    <a href="https://arxiv.org/abs/2110.06983">this</a> arxiv
-                    paper on fiber bundle networks based on a local
-                    trivialization wherein a space can be locally decomposed
-                    into a product space that cleanly encodes modern generative
-                    architectures.
-                </div>
-            </div>
-        </div>
-        <h2>Cool Stuff I've Done</h2>
+
+        <p>
+            I build systems that make other engineers more productive. Recently
+            that has meant AI infrastructure, developer tooling, type systems,
+            distributed workers, and performance work.
+        </p>
+
+        <p>I also do fullstack :).</p>
+
+        <p>
+            Reach me by filling in the blank:
+            <b>sidmcheath_gmail.com</b>.
+        </p>
+
+        <h2>Recently</h2>
         <ul>
             <li>
-                Check out
-                <a href="https://github.com/UTMIST/3DResNet"
-                    >this 3D ResNet implementation</a
-                >
-                from my first year, using
-                <a href="https://arxiv.org/abs/2004.04968">this paper</a>
+                Built distributed AI-agent orchestration infrastructure on
+                Kubernetes and NATS.
             </li>
             <li>
-                <a href="https://github.com/EclipseIsDead/tetra.c"
-                    >A spinning ascii tetrahedron</a
-                >, inspired by the infamous donut.c (ignore my poor obfuscation
-                attempt please)
+                Implemented a MoA cloud agent using open source models and a
+                custom harness based off of Pi.
             </li>
             <li>
-                A brief
-                <a href="https://github.com/EclipseIsDead/neuralink"
-                    >attempt and analysis of the neuralink compression
-                    challenge</a
-                >
+                Extended a cross-language type system powering thousands of
+                generated APIs, python types, and typescript types.
             </li>
+            <li>Built dynamic UI generation from runtime type metadata.</li>
+            <li>
+                Optimized PostgreSQL workloads and frontend performance
+                bottlenecks.
+            </li>
+        </ul>
+
+        <h2>Systems Notes</h2>
+        <script>
+            for (const note of document.querySelectorAll(".system-note")) {
+                note.addEventListener("toggle", () => {
+                    if (!note.open) return;
+
+                    for (const other of document.querySelectorAll(
+                        ".system-note[open]",
+                    )) {
+                        if (other !== note) other.open = false;
+                    }
+                });
+            }
+        </script>
+
+        <details class="system-note" open>
+            <summary>AI agent orchestration</summary>
+            <p>
+                I worked on a platform where external events trigger autonomous
+                agents, agents run as ephemeral Kubernetes workloads, and a
+                control plane reconciles what the queue thinks is happening with
+                what the cluster is actually running.
+            </p>
+
+            <pre>
+event -> NATS JetStream -> control plane -> Kubernetes Job
+          ^                       |
+          |                       v
+          +-------- agent lifecycle events
+            </pre>
+
+            <p>
+                The interesting part is not launching a pod. It is deciding what
+                happens when an acknowledgement is lost, a job is evicted, a
+                message is replayed, or two controllers observe different
+                versions of the world. The design pressure is mostly around
+                idempotency, recovery, and making failure ordinary.
+            </p>
+        </details>
+
+        <details class="system-note">
+            <summary>Types as infrastructure</summary>
+            <p>
+                I have spent a lot of time around type systems that do more than
+                satisfy a compiler. The philosophy here was that devs should not
+                write their own types, because I know better. Instead tell them
+                to define what they want in YAML ang generate the types with an
+                RTTI Parser! A backend type definition can generate frontend
+                types, API clients, runtime metadata, validation, forms, tables,
+                and internal tools.
+            </p>
+
+            <pre>
+typespec YAML
+  - fields
+  - validators
+  - relationships
+  - display hints
+        |
+        v
+RTTI parser / codegen
+        |
+        +----------+--------------+---------------+
+        |          |              |               |
+        v          v              v               v
+ Python types  TypeScript types  API clients  runtime metadata
+                                               |
+                                               v
+                                      dynamic UI / tools
+                                               |
+                       +-----------------------+--------------------+
+                       |                       |                    |
+                       v                       v                    v
+                 generated forms        tables / filters     validation UI
+            </pre>
+
+            <p>
+                Runtime type information is what makes generic tooling possible.
+                If the program can inspect fields, constraints, relationships,
+                permissions, and display hints, engineers stop rebuilding the
+                same boring interfaces by hand.
+            </p>
+        </details>
+
+        <details class="system-note">
+            <summary>Hot reloading distributed workers</summary>
+            <p>
+                Long-running asynchronous workers are awkward to update. Killing
+                a process is easy, but it can interrupt in-flight work,
+                duplicate side effects, drop local state, or leave a queue
+                briefly uncovered.
+            </p>
+
+            <pre>
+code change
+  -> start next worker generation
+  -> wait for readiness
+  -> mark old generation draining
+  -> finish, checkpoint, or release in-flight work
+            </pre>
+
+            <p>
+                The useful abstraction is a lifecycle contract: start, register,
+                become ready, drain, release, terminate. Once that state machine
+                is explicit, hot module replacement becomes coordinated worker
+                replacement rather than an ad hoc restart script (surely nobody
+                would ever write that and call it hot reload!).
+            </p>
+        </details>
+
+        <details class="system-note">
+            <summary>Finding bottlenecks</summary>
+            <p>
+                Performance work is just profiling which is just measuring which
+                is just looking. For postgres this was basically just plugging
+                and chugging `EXPLAIN ANALYZE` queries with dalibo and then
+                remembering that joining massive tables sucks.
+            </p>
+            <p>
+                Optimizing frontends is a little bit more fun, and sometimes you
+                have to write your own tools! For example, sometimes you have
+                over 10000 object selectors on a page because somebody used bad
+                factory patterns, so you write your own console tool and start
+                refactoring.
+            </p>
+        </details>
+
+        <h2>Some Things I've Done</h2>
+
+        <h3>Developer tools / AI systems</h3>
+        <ul>
+            <li>
+                Built code intelligence and developer productivity tooling for
+                understanding large codebases.
+            </li>
+            <li>
+                Built dynamic UI surfaces from runtime metadata rather than
+                handwritten one-off forms.
+            </li>
+            <li>
+                Implemented a mixture-of-agents cloud agent using open source
+                models and a custom Pi-based harness.
+            </li>
+        </ul>
+
+        <h3>Systems / low-level</h3>
+        <ul>
             <li>
                 <a href="https://github.com/EclipseIsDead/asym"
                     >A zpaq 1.10 encoder/decoder architecture</a
                 >
-                for compression written in MIPS assembly
+                in MIPS assembly.
             </li>
             <li>
-                A quick little W.I.P.
-                <a href="https://github.com/EclipseIsDead/fluid-ic"
-                    >fluid simulator,</a
-                >
-                written entirely in C++ with GLSL style shaders
-            </li>
-            <li>
-                The classic arcade game asteroids, currently being implemented
                 <a href="https://github.com/EclipseIsDead/asteroids.asm"
-                    >in MIPS assembly using the MARS IDE</a
-                >
+                    >Asteroids in MIPS assembly</a
+                >, using the MARS IDE.
+            </li>
+            <li>
+                <a href="https://github.com/EclipseIsDead/tetra.c">tetra.c</a>,
+                a spinning ASCII tetrahedron inspired by donut.c.
             </li>
         </ul>
-        <h2>Cooler Stuff I've Done</h2>
+
+        <h3>Graphics / math / simulation</h3>
         <ul>
             <li>
-                Making a game:
-                <a href="https://github.com/EclipseIsDead/Descent-n-Desire"
-                    >Descent & Desire</a
+                <a href="https://github.com/UTMIST/3DResNet"
+                    >A 3D ResNet implementation</a
                 >
-                in Godot.
+                based on a computer vision paper.
             </li>
             <li>
-                Currently writing
+                <a href="https://github.com/EclipseIsDead/fluid-ic"
+                    >A small fluid simulator</a
+                >
+                written in C++ with GLSL-style shader ideas.
+            </li>
+            <li>
+                Worked through C*-algebras and K-Theory, and spent time thinking
+                about fiber bundle networks and local product structure in
+                generative models.
+            </li>
+            <li>
+                <a href="https://github.com/EclipseIsDead/wurm"
+                    >A C. elegans simulation experiment</a
+                >
+                in Python with PyTorch and reinforcement learning.
+            </li>
+        </ul>
+
+        <h3>Applications</h3>
+        <ul>
+            <li>
                 <a href="https://github.com/BinyuanZhu/DungeonPlanner"
-                    >an open source D&D 5e dungeon planner</a
-                >
-                with my group, with OpenGL.
+                    >Dungeon Planner</a
+                >, an open source D&amp;D 5e planning tool built with a group.
             </li>
             <li>
-                Wrote software for charities and nonprofits: a
+                Software for
                 <a href="https://github.com/uoftblueprint/homes-for-heroes"
-                    >veteran's org</a
+                    >Homes for Heroes</a
                 >
                 and
                 <a href="https://github.com/uoftblueprint/tces-2022"
                     >Toronto Community Employment Services</a
                 >
+                through UofT Blueprint.
             </li>
             <li>
-                Talked to Stephen Wolfram about the future of quantum computing
-                (he did not have a high opinion of it)
-            </li>
-            <li>
-                Worked through
-                <a
-                    href="https://wiki.math.ntnu.no/_media/ma8107/2014h/rordam_m.pdf"
-                    >Rordam's text on C*-algebras and K-Theory</a
-                >
-            </li>
-            <li>
-                <a href="https://github.com/EclipseIsDead/wurm"
-                    >Writing a simulation of C. elegans in Python</a
-                >, using PyTorch and RL
+                <a href="https://github.com/EclipseIsDead/Descent-n-Desire"
+                    >Descent &amp; Desire</a
+                >, a game project in Godot.
             </li>
         </ul>
+
+        <h2>About</h2>
+        <p>
+            I studied Computer Science and Mathematics at the University of
+            Toronto. I am drawn to systems thinking, large codebases, and the
+            internal platforms that make engineering organizations more
+            effective.
+        </p>
     </body>
 </html>
