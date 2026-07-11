@@ -1,69 +1,85 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
-        <title>Demos</title>
+        <title>Demos - Siddarth Dagar</title>
         <link rel="icon" type="image/png" href="assets/favicon.png" />
-        <link
-            rel="stylesheet"
-            href="assets/gallery.css"
-            type="text/css"
-            media="screen, projection"
-        />
+        <link rel="stylesheet" href="assets/style.css" />
+        <link rel="stylesheet" href="assets/gallery.css" />
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
-        <h1>Demos:</h1>
-        <hr />
-        <figure class="code-manifold">
-            <canvas
-                id="code-manifold"
-                width="960"
-                height="420"
-                aria-label="A rotating saddle surface drawn from the JavaScript code that renders it"
-            ></canvas>
-        </figure>
-        <hr />
-        <ul class="hoverbox">
-            <li>
-                <a href="#">
-                    <img
-                        src="https://raw.githubusercontent.com/EclipseIsDead/tetra.c/main/tetra.gif"
-                        alt="tetra.c"
-                    />
-                    <img
-                        src="https://raw.githubusercontent.com/EclipseIsDead/tetra.c/main/tetra.gif"
-                        alt="tetra.c"
-                        class="preview"
-                    />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img
-                        src="https://raw.githubusercontent.com/EclipseIsDead/fluid-ic/main/demo.gif"
-                        alt="fluid-ic"
-                    />
-                    <img
-                        src="https://raw.githubusercontent.com/EclipseIsDead/fluid-ic/main/demo.gif"
-                        alt="fluid-ic"
-                        class="preview"
-                    />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img
-                        src="https://raw.githubusercontent.com/EclipseIsDead/Descent-n-Desire/blob/main/demos/DnD%20-%20Devlog%201.mp4"
-                        alt="descent-n-desire"
-                    />
-                    <img
-                        src="https://raw.githubusercontent.com/EclipseIsDead/Descent-n-Desire/blob/main/demos/DnD%20-%20Devlog%201.mp4"
-                        alt="descent-n-desire"
-                        class="preview"
-                    />
-                </a>
-            </li>
-        </ul>
+        <main>
+            <header class="site-header">
+                <h1>Demos</h1>
+                <nav class="nav-links" aria-label="Primary">
+                    <a href="index.html">Home</a>
+                    <a href="work.html">Work</a>
+                    <a href="blog.html">Blog</a>
+                </nav>
+            </header>
+
+            <hr />
+
+            <figure class="code-manifold">
+                <canvas
+                    id="code-manifold"
+                    width="960"
+                    height="420"
+                    aria-label="A rotating saddle surface drawn from the JavaScript code that renders it"
+                ></canvas>
+                <figcaption>
+                    A rotating saddle surface drawn from the JavaScript code
+                    that renders it.
+                </figcaption>
+            </figure>
+
+            <hr />
+
+            <ul class="demo-grid">
+                <li>
+                    <a
+                        class="demo-card"
+                        href="https://github.com/EclipseIsDead/tetra.c"
+                    >
+                        <img
+                            src="https://raw.githubusercontent.com/EclipseIsDead/tetra.c/main/tetra.gif"
+                            alt="A spinning ASCII tetrahedron"
+                        />
+                        <span>tetra.c</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="demo-card"
+                        href="https://github.com/EclipseIsDead/fluid-ic"
+                    >
+                        <img
+                            src="https://raw.githubusercontent.com/EclipseIsDead/fluid-ic/main/demo.gif"
+                            alt="A small fluid simulation"
+                        />
+                        <span>fluid-ic</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="demo-card"
+                        href="https://github.com/EclipseIsDead/Descent-n-Desire"
+                    >
+                        <video
+                            src="https://raw.githubusercontent.com/EclipseIsDead/Descent-n-Desire/main/demos/DnD%20-%20Devlog%201.mp4"
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            aria-label="Descent &amp; Desire development footage"
+                        ></video>
+                        <span>Descent &amp; Desire</span>
+                    </a>
+                </li>
+            </ul>
+        </main>
+
         <script src="assets/code-manifold.js"></script>
     </body>
 </html>

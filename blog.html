@@ -1,27 +1,152 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
-        <title>Blog Posts</title>
+        <title>Blog - Siddarth Dagar</title>
         <link rel="icon" type="image/png" href="assets/favicon.png" />
         <link rel="stylesheet" href="assets/style.css" />
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
+        <main>
+            <header class="site-header">
+                <h1>Blog Posts</h1>
+                <nav class="nav-links" aria-label="Primary">
+                    <a href="index.html">Home</a>
+                    <a href="work.html">Work</a>
+                    <a href="demo.html">Demos</a>
+                </nav>
+            </header>
+
+            <hr />
+
+            <ul id="blog-list" class="post-list">
+                <li>
+                    <a href="blog/descent%20n%27%20desire.html"
+                        >Descent &amp; Desire: Dev Log #1</a
+                    >
+                    <time datetime="2025-04-17">Apr 17, 2025</time>
+                </li>
+                <li>
+                    <a href="blog/planner.html">D&amp;D 5e Dungeon Planner</a>
+                    <time datetime="2025-02-06">Feb 6, 2025</time>
+                </li>
+                <li>
+                    <a href="blog/website.html">Web Dev as a Whole</a>
+                    <time datetime="2024-07-16">Jul 16, 2024</time>
+                </li>
+                <li>
+                    <a href="blog/asteroids.html">Asteroids.asm</a>
+                    <time datetime="2024-07-15">Jul 15, 2024</time>
+                </li>
+                <li>
+                    <a href="blog/neuralink.html"
+                        >The Neuralink Compression Challenge</a
+                    >
+                    <time datetime="2024-06-12">Jun 12, 2024</time>
+                </li>
+            </ul>
+        </main>
+
         <script>
             (async () => {
-            // only appears after push to master
-            const response = await fetch('https://api.github.com/repos/EclipseIsDead/EclipseIsDead.github.io/contents/blog?ref=master');
-            const data = await response.json();
-            // console.log(data);
-            let htmlString = '<h1>Blog Posts:</h1><hr /><ul>';
-            // look mom! no server!
-            for (let file of data) {
-                htmlString += `<li><a href="${file.path}">${file.name}</a></li>`;
-            }
-            htmlString += '</ul>';
-            // console.log(htmlString);
-            document.getElementsByTagName('body')[0].innerHTML = htmlString;
+                const list = document.getElementById("blog-list");
+                const knownPosts = {
+                    "descent n' desire.html": {
+                        title: "Descent & Desire: Dev Log #1",
+                        date: "Apr 17, 2025",
+                        datetime: "2025-04-17",
+                        order: 0,
+                    },
+                    "planner.html": {
+                        title: "D&D 5e Dungeon Planner",
+                        date: "Feb 6, 2025",
+                        datetime: "2025-02-06",
+                        order: 1,
+                    },
+                    "website.html": {
+                        title: "Web Dev as a Whole",
+                        date: "Jul 16, 2024",
+                        datetime: "2024-07-16",
+                        order: 2,
+                    },
+                    "asteroids.html": {
+                        title: "Asteroids.asm",
+                        date: "Jul 15, 2024",
+                        datetime: "2024-07-15",
+                        order: 3,
+                    },
+                    "neuralink.html": {
+                        title: "The Neuralink Compression Challenge",
+                        date: "Jun 12, 2024",
+                        datetime: "2024-06-12",
+                        order: 4,
+                    },
+                };
+
+                const fallbackTitle = (name) =>
+                    name
+                        .replace(/\.html$/i, "")
+                        .replace(/[-_]/g, " ")
+                        .replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+                const escapeHtml = (value) =>
+                    value.replace(
+                        /[&<>"']/g,
+                        (character) =>
+                            ({
+                                "&": "&amp;",
+                                "<": "&lt;",
+                                ">": "&gt;",
+                                '"': "&quot;",
+                                "'": "&#39;",
+                            })[character],
+                    );
+
+                const encodePath = (path) =>
+                    path
+                        .split("/")
+                        .map((part) => encodeURIComponent(part))
+                        .join("/");
+
+                try {
+                    const response = await fetch(
+                        "https://api.github.com/repos/EclipseIsDead/EclipseIsDead.github.io/contents/blog?ref=master",
+                    );
+
+                    if (!response.ok) return;
+
+                    const posts = (await response.json())
+                        .filter((file) => file.name.endsWith(".html"))
+                        .sort((a, b) => {
+                            const aMeta = knownPosts[a.name];
+                            const bMeta = knownPosts[b.name];
+                            const aOrder = aMeta ? aMeta.order : 999;
+                            const bOrder = bMeta ? bMeta.order : 999;
+
+                            return (
+                                aOrder - bOrder || a.name.localeCompare(b.name)
+                            );
+                        });
+
+                    if (!posts.length) return;
+
+                    list.innerHTML = posts
+                        .map((file) => {
+                            const meta = knownPosts[file.name];
+                            const title =
+                                meta?.title || fallbackTitle(file.name);
+                            const date = meta
+                                ? ` <time datetime="${meta.datetime}">${meta.date}</time>`
+                                : "";
+
+                            return `<li><a href="${encodePath(file.path)}">${escapeHtml(title)}</a>${date}</li>`;
+                        })
+                        .join("");
+                } catch (error) {
+                    console.warn("Could not refresh blog list", error);
+                }
             })();
         </script>
-    <body>
+    </body>
 </html>

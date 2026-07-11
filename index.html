@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Siddarth's Website</title>
+        <title>Siddarth Dagar</title>
         <link rel="icon" type="image/png" href="assets/favicon.png" />
         <link rel="stylesheet" href="assets/style.css" />
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             name="description"
-            content="Personal website of Siddarth Dagar, a systems engineer focused on AI infrastructure, developer tooling, distributed systems, type systems, and performance engineering."
+            content="Personal website of Siddarth Dagar, a software engineer focused on platform infrastructure, developer tooling, AI infrastructure, type-driven systems, and performance work."
         />
         <meta
             name="keywords"
-            content="Siddarth Dagar, Systems Engineering, AI Infrastructure, Developer Tooling, Distributed Systems, Type Systems, Performance Engineering"
+            content="Siddarth Dagar, Platform Engineering, Developer Tooling, AI Infrastructure, Distributed Systems, Type Systems, Performance Engineering"
         />
         <meta name="author" content="Siddarth Dagar" />
         <meta property="og:type" content="website" />
@@ -19,7 +20,7 @@
         <meta property="og:title" content="Siddarth Dagar" />
         <meta
             property="og:description"
-            content="I build systems that make other engineers more productive."
+            content="Software engineer focused on platform infrastructure, developer tooling, AI systems, and type-driven product architecture."
         />
         <meta
             property="og:image"
@@ -32,7 +33,7 @@
         />
         <meta
             property="twitter:title"
-            content="Siddarth Dagar - Systems Engineer"
+            content="Siddarth Dagar - Platform Engineer"
         />
         <meta
             property="twitter:description"
@@ -44,52 +45,295 @@
         />
     </head>
     <body>
-        <h1>Siddarth Dagar (@EclipseIsDead)</h1>
+        <main>
+            <header class="site-header">
+                <h1>
+                    Siddarth Dagar <span class="handle">@EclipseIsDead</span>
+                </h1>
+                <nav class="nav-links" aria-label="Primary">
+                    <a href="work.html">Work</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="demo.html">Demos</a>
+                    <a href="https://x.com/siddarf">X</a>
+                    <a href="https://github.com/EclipseIsDead">GitHub</a>
+                    <a href="https://www.linkedin.com/in/siddarth-dagar/"
+                        >LinkedIn</a
+                    >
+                </nav>
+            </header>
 
-        <p>
-            <a href="blog.html">Blog</a> | <a href="demo.html">Demos</a> |
-            <a href="https://x.com/siddarf">X</a> |
-            <a href="https://github.com/EclipseIsDead">Github</a> |
-            <a href="https://www.linkedin.com/in/siddarth-dagar/">LinkedIn</a>
-        </p>
+            <hr />
 
-        <hr />
+            <p class="lede">
+                I build infrastructure for engineers: platform systems, developer
+                tooling, AI/LLM workflows, type-driven product architecture, and
+                performance work across large production codebases.
+            </p>
 
-        <p>
-            I build systems that make other engineers more productive. Recently
-            that has meant AI infrastructure, developer tooling, type systems,
-            distributed workers, and performance work.
-        </p>
+            <aside class="margin-note note-thesis">
+                <strong>Thesis.</strong> Mature codebases reward systems thinking.
+                The hard part is fitting features into permissions, generated
+                types, stale clients, migrations, workflows, and long-lived
+                platform conventions.
+            </aside>
 
-        <p>I also do fullstack :).</p>
+            <p>
+                Recently that has meant structured backend/entity work, schema and
+                runtime-type infrastructure, backend hot reloading, distributed
+                agent orchestration, LLM alert workflows, customer-critical product
+                migrations, and performance debugging.
+            </p>
 
-        <p>
-            Reach me by filling in the blank:
-            <b>sidmcheath_gmail.com</b>.
-        </p>
+            <p>
+                Reach me by filling in the blank:
+                <code>sidmcheath_gmail.com</code>.
+            </p>
 
-        <h2>Recently</h2>
-        <ul>
-            <li>
-                Built distributed AI-agent orchestration infrastructure on
-                Kubernetes and NATS.
-            </li>
-            <li>
-                Implemented a MoA cloud agent using open source models and a
-                custom harness based off of Pi.
-            </li>
-            <li>
-                Extended a cross-language type system powering thousands of
-                generated APIs, python types, and typescript types.
-            </li>
-            <li>Built dynamic UI generation from runtime type metadata.</li>
-            <li>
-                Optimized PostgreSQL workloads and frontend performance
-                bottlenecks.
-            </li>
-        </ul>
+            <h2>Selected Work</h2>
+            <ul class="feature-list">
+                <li>
+                    <a href="work.html#training-module"
+                        >First-class training/quiz infrastructure</a
+                    >
+                    inside a structured entity platform, including schema,
+                    permissions, cached parsing, and builder/learner modes.
+                </li>
+                <li>
+                    <a href="work.html#type-spec"
+                        >Generic type patterns in a production schema system</a
+                    >,
+                    extending parser, runtime metadata walking, spec definitions,
+                    and builder validation.
+                </li>
+                <li>
+                    <a href="work.html#hmr">Backend hot module reloading</a>
+                    for web, ML, asynchronous job, and LLM server routes.
+                </li>
+                <li>
+                    <a href="work.html#llm-alerts">Agentic LLM alert workflows</a>
+                    from model plumbing and tool execution to structured
+                    recommendations and chat handoff.
+                </li>
+                <li>
+                    <a href="work.html#agent-orchestration"
+                        >Distributed AI-agent orchestration</a
+                    >
+                    over Kubernetes Jobs, NATS JetStream, PostgreSQL, and Redis.
+                </li>
+                <li>
+                    <a href="work.html#performance"
+                        >Page-load, PostgreSQL, Git, and legacy frontend
+                        performance work</a
+                    >
+                    in a mature product surface.
+                </li>
+            </ul>
 
-        <h2>Systems Notes</h2>
+            <aside class="margin-note note-cool-stuff">
+                <strong>Other cool stuff I’ve done.</strong>
+                <ul>
+                    <li>
+                        <a href="https://github.com/EclipseIsDead/asym">zpaq</a>
+                        and
+                        <a href="https://github.com/EclipseIsDead/asteroids.asm"
+                            >Asteroids</a
+                        >
+                        in MIPS assembly.
+                    </li>
+                    <li>
+                        <a href="https://github.com/EclipseIsDead/tetra.c"
+                            >tetra.c</a
+                        >,
+                        a spinning ASCII tetrahedron.
+                    </li>
+                    <li>
+                        A
+                        <a href="https://github.com/EclipseIsDead/fluid-ic"
+                            >small fluid simulator</a
+                        >
+                        in C++.
+                    </li>
+                    <li>
+                        A
+                        <a href="https://github.com/UTMIST/3DResNet"
+                            >3D ResNet reproduction</a
+                        >
+                        on video data.
+                    </li>
+                    <li>
+                        <a href="https://github.com/EclipseIsDead/wurm"
+                            >C. elegans simulation experiments</a
+                        >
+                        with PyTorch/RL.
+                    </li>
+                    <li>
+                        <a href="https://github.com/BinyuanZhu/DungeonPlanner"
+                            >A D&amp;D planner</a
+                        >
+                        and
+                        <a href="https://github.com/EclipseIsDead/Descent-n-Desire"
+                            >a Godot roguelike</a
+                        >.
+                    </li>
+                </ul>
+            </aside>
+
+            <h2>Recently</h2>
+            <ul>
+                <li>
+                    Shipped 7 production projects and 155+ customer/incident fixes
+                    across platform infrastructure, foundational product features,
+                    customer-priority workflows, and developer-experience systems.
+                </li>
+                <li>
+                    Built a hierarchical training module MVP in under two weeks:
+                    module → page → block → question → answer/response.
+                </li>
+                <li>
+                    Added dynamic parametrization to a cross-language type system
+                    that powers generated Python types, TypeScript types, API
+                    clients, runtime metadata, and dynamic UI surfaces.
+                </li>
+                <li>
+                    Designed and shipped LLM-enabled alerting workflows that analyze
+                    platform data, fire structured recommendations, and hand users
+                    into contextual chat.
+                </li>
+                <li>
+                    Migrated customer-critical process workflows from tree models to
+                    DAGs with edge entities, workflow-aware traversal, and graph UI
+                    rendering.
+                </li>
+                <li>
+                    Worked on distributed AI-agent infrastructure where external
+                    events trigger ephemeral Kubernetes workloads coordinated over
+                    NATS JetStream.
+                </li>
+            </ul>
+
+            <aside class="margin-note note-platform-model">
+                <strong>What “platform” usually means here.</strong>
+                <p>
+                    A feature is rarely just a screen. It is schema, migrations,
+                    permissions, generated types, runtime metadata, APIs, UI,
+                    rollout safety, and debugging the weird old edge case.
+                </p>
+            </aside>
+
+            <h2>Engineering Notes</h2>
+
+            <details class="system-note" open>
+                <summary>Types are infrastructure</summary>
+                <p>
+                    In a large product, schemas are not just correctness tools. They
+                    become APIs, SDKs, runtime metadata, form renderers, validation
+                    layers, permissions, and migration boundaries.
+                </p>
+                <pre>YAML schema
+  -> parser / generator
+  -> Python + TypeScript + OpenAPI + SDK
+  -> runtime type information
+  -> dynamic forms, pickers, validation, docs, and tools</pre>
+            </details>
+
+            <details class="system-note">
+                <summary>Recovery paths matter more than happy paths</summary>
+                <p>
+                    Event-driven systems look straightforward until pods die,
+                    consumers get stuck, messages are replayed, or state needs to be
+                    reconstructed after restart. Good infrastructure makes recovery
+                    boring.
+                </p>
+                <pre>event -> queue -> control plane -> worker
+  ^          |           |
+  |          v           v
+  +---- ack state   lifecycle/status reconciliation</pre>
+            </details>
+
+            <details class="system-note">
+                <summary>Developer experience compounds</summary>
+                <p>
+                    A repeated workflow does not need to look important to be worth
+                    optimizing. Backend HMR, Git performance, and fast local loops
+                    create leverage because every engineer pays that cost every day.
+                </p>
+            </details>
+
+            <details class="system-note">
+                <summary>AI-assisted engineering needs boundaries</summary>
+                <p>
+                    AI tooling is useful for parallelizing boilerplate migrations and
+                    frontend iteration. Human judgment should own schema design,
+                    security models, parser/cache correctness, and product
+                    constraints.
+                </p>
+            </details>
+
+            <h2>Experience</h2>
+            <div class="experience-list">
+                <article class="experience-item">
+                    <h3>Uncountable · Software Engineer</h3>
+                    <p class="post-date">October 2025 -- Present</p>
+                    <p>
+                        Platform engineering work across structured backend systems,
+                        TypeSpec/runtime metadata, developer experience, LLM/agent
+                        infrastructure, performance optimization, and
+                        customer-critical product workflows.
+                    </p>
+                </article>
+
+                <article class="experience-item">
+                    <h3>MathWorks · Engineering Development Group Intern</h3>
+                    <p class="post-date">May 2023 -- August 2023</p>
+                    <p>
+                        Built MATLAB code-intelligence tooling, TypeScript indexing,
+                        dataset-labeling integrations, and compilation workflow
+                        optimizations for internal developer tools and early
+                        LLM-powered assistant infrastructure.
+                    </p>
+                </article>
+
+                <article class="experience-item">
+                    <h3>Toronto Early Cognition Lab · Software Developer</h3>
+                    <p class="post-date">September 2022 -- December 2022</p>
+                    <p>
+                        Independently delivered a full-stack video-processing system
+                        for secure upload, annotation, anonymization, permissions,
+                        audit logging, and researcher handoff.
+                    </p>
+                </article>
+
+                <article class="experience-item">
+                    <h3>16Bit AI · Software Engineering Intern</h3>
+                    <p class="post-date">May 2022 -- August 2022</p>
+                    <p>
+                        Stabilized production medical-imaging model workflows,
+                        fixed cross-browser EXIF preprocessing failures, and
+                        supported real-time patient submission, validation, and
+                        clinical audit infrastructure.
+                    </p>
+                </article>
+            </div>
+
+            <aside class="margin-note note-older-arc">
+                <strong>Earlier arc.</strong>
+                <p>
+                    Before the platform-heavy work, I spent time in code
+                    intelligence, research tooling, medical AI reliability, and
+                    applied ML. That is why the infra/product/ML boundary is fun to
+                    me.
+                </p>
+            </aside>
+
+            <h2>About</h2>
+            <p>
+                I studied Computer Science and Mathematics at the University of
+                Toronto. I am drawn to large systems, developer-speed
+                infrastructure, scientific/product platforms, and tools that turn
+                hard-won engineering patterns into reusable leverage.
+            </p>
+        </main>
+
         <script>
             for (const note of document.querySelectorAll(".system-note")) {
                 note.addEventListener("toggle", () => {
@@ -103,214 +347,5 @@
                 });
             }
         </script>
-
-        <details class="system-note" open>
-            <summary>AI agent orchestration</summary>
-            <p>
-                I worked on a platform where external events trigger autonomous
-                agents, agents run as ephemeral Kubernetes workloads, and a
-                control plane reconciles what the queue thinks is happening with
-                what the cluster is actually running.
-            </p>
-
-            <pre>
-event -> NATS JetStream -> control plane -> Kubernetes Job
-          ^                       |
-          |                       v
-          +-------- agent lifecycle events
-            </pre>
-
-            <p>
-                The interesting part is not launching a pod. It is deciding what
-                happens when an acknowledgement is lost, a job is evicted, a
-                message is replayed, or two controllers observe different
-                versions of the world. The design pressure is mostly around
-                idempotency, recovery, and making failure ordinary.
-            </p>
-        </details>
-
-        <details class="system-note">
-            <summary>Types as infrastructure</summary>
-            <p>
-                I have spent a lot of time around type systems that do more than
-                satisfy a compiler. The philosophy here was that devs should not
-                write their own types, because I know better. Instead tell them
-                to define what they want in YAML ang generate the types with an
-                RTTI Parser! A backend type definition can generate frontend
-                types, API clients, runtime metadata, validation, forms, tables,
-                and internal tools.
-            </p>
-
-            <pre>
-typespec YAML
-  - fields
-  - validators
-  - relationships
-  - display hints
-        |
-        v
-RTTI parser / codegen
-        |
-        +----------+--------------+---------------+
-        |          |              |               |
-        v          v              v               v
- Python types  TypeScript types  API clients  runtime metadata
-                                               |
-                                               v
-                                      dynamic UI / tools
-                                               |
-                       +-----------------------+--------------------+
-                       |                       |                    |
-                       v                       v                    v
-                 generated forms        tables / filters     validation UI
-            </pre>
-
-            <p>
-                Runtime type information is what makes generic tooling possible.
-                If the program can inspect fields, constraints, relationships,
-                permissions, and display hints, engineers stop rebuilding the
-                same boring interfaces by hand.
-            </p>
-        </details>
-
-        <details class="system-note">
-            <summary>Hot reloading distributed workers</summary>
-            <p>
-                Long-running asynchronous workers are awkward to update. Killing
-                a process is easy, but it can interrupt in-flight work,
-                duplicate side effects, drop local state, or leave a queue
-                briefly uncovered.
-            </p>
-
-            <pre>
-code change
-  -> start next worker generation
-  -> wait for readiness
-  -> mark old generation draining
-  -> finish, checkpoint, or release in-flight work
-            </pre>
-
-            <p>
-                The useful abstraction is a lifecycle contract: start, register,
-                become ready, drain, release, terminate. Once that state machine
-                is explicit, hot module replacement becomes coordinated worker
-                replacement rather than an ad hoc restart script (surely nobody
-                would ever write that and call it hot reload!).
-            </p>
-        </details>
-
-        <details class="system-note">
-            <summary>Finding bottlenecks</summary>
-            <p>
-                Performance work is just profiling which is just measuring which
-                is just looking. For postgres this was basically just plugging
-                and chugging `EXPLAIN ANALYZE` queries with dalibo and then
-                remembering that joining massive tables sucks.
-            </p>
-            <p>
-                Optimizing frontends is a little bit more fun, and sometimes you
-                have to write your own tools! For example, sometimes you have
-                over 10000 object selectors on a page because somebody used bad
-                factory patterns, so you write your own console tool and start
-                refactoring.
-            </p>
-        </details>
-
-        <h2>Some Things I've Done</h2>
-
-        <h3>Developer tools / AI systems</h3>
-        <ul>
-            <li>
-                Built code intelligence and developer productivity tooling for
-                understanding large codebases.
-            </li>
-            <li>
-                Built dynamic UI surfaces from runtime metadata rather than
-                handwritten one-off forms.
-            </li>
-            <li>
-                Implemented a mixture-of-agents cloud agent using open source
-                models and a custom Pi-based harness.
-            </li>
-        </ul>
-
-        <h3>Systems / low-level</h3>
-        <ul>
-            <li>
-                <a href="https://github.com/EclipseIsDead/asym"
-                    >A zpaq 1.10 encoder/decoder architecture</a
-                >
-                in MIPS assembly.
-            </li>
-            <li>
-                <a href="https://github.com/EclipseIsDead/asteroids.asm"
-                    >Asteroids in MIPS assembly</a
-                >, using the MARS IDE.
-            </li>
-            <li>
-                <a href="https://github.com/EclipseIsDead/tetra.c">tetra.c</a>,
-                a spinning ASCII tetrahedron inspired by donut.c.
-            </li>
-        </ul>
-
-        <h3>Graphics / math / simulation</h3>
-        <ul>
-            <li>
-                <a href="https://github.com/UTMIST/3DResNet"
-                    >A 3D ResNet implementation</a
-                >
-                based on a computer vision paper.
-            </li>
-            <li>
-                <a href="https://github.com/EclipseIsDead/fluid-ic"
-                    >A small fluid simulator</a
-                >
-                written in C++ with GLSL-style shader ideas.
-            </li>
-            <li>
-                Worked through C*-algebras and K-Theory, and spent time thinking
-                about fiber bundle networks and local product structure in
-                generative models.
-            </li>
-            <li>
-                <a href="https://github.com/EclipseIsDead/wurm"
-                    >A C. elegans simulation experiment</a
-                >
-                in Python with PyTorch and reinforcement learning.
-            </li>
-        </ul>
-
-        <h3>Applications</h3>
-        <ul>
-            <li>
-                <a href="https://github.com/BinyuanZhu/DungeonPlanner"
-                    >Dungeon Planner</a
-                >, an open source D&amp;D 5e planning tool built with a group.
-            </li>
-            <li>
-                Software for
-                <a href="https://github.com/uoftblueprint/homes-for-heroes"
-                    >Homes for Heroes</a
-                >
-                and
-                <a href="https://github.com/uoftblueprint/tces-2022"
-                    >Toronto Community Employment Services</a
-                >
-                through UofT Blueprint.
-            </li>
-            <li>
-                <a href="https://github.com/EclipseIsDead/Descent-n-Desire"
-                    >Descent &amp; Desire</a
-                >, a game project in Godot.
-            </li>
-        </ul>
-
-        <h2>About</h2>
-        <p>
-            I studied Computer Science and Mathematics at the University of
-            Toronto. I am drawn to systems thinking, large codebases, and the
-            internal platforms that make engineering organizations more
-            effective.
-        </p>
     </body>
 </html>

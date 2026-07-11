@@ -1,78 +1,74 @@
-body {
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 10px;
-}
-
 .code-manifold {
     clear: both;
-    margin: 18px auto 24px;
-    max-width: 960px;
+    margin: 1rem 0 1.5rem;
 }
 
 .code-manifold canvas {
     background: #08090c;
-    border: 1px solid #242936;
+    border: var(--rule-width) solid #242936;
     display: block;
     height: auto;
     max-width: 100%;
 }
 
-.hoverbox {
-    cursor: default;
+.code-manifold figcaption {
+    color: var(--muted);
+    font-size: 0.875rem;
+    line-height: 1.45;
+    margin-top: 0.65rem;
+    text-align: left;
+}
+
+.demo-grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     list-style: none;
+    padding-left: 0;
 }
 
-@media (max-width: 720px) {
-    body {
-        margin-left: 18px;
-        margin-right: 18px;
-    }
+.demo-grid li {
+    margin: 0;
+    padding-left: 0;
 }
 
-.hoverbox a {
-    cursor: default;
-}
-
-.hoverbox a .preview {
-    display: none;
-}
-
-.hoverbox a:hover .preview {
+.demo-card {
+    background: var(--paper);
+    border: var(--rule-width) solid var(--rule-soft);
     display: block;
-    position: absolute;
-    top: -33px;
-    left: -45px;
-    z-index: 1;
+    padding: 0.45rem;
+    text-decoration: none;
+    transition:
+        transform 160ms var(--ease-out),
+        border-color 160ms ease,
+        box-shadow 160ms ease;
 }
 
-.hoverbox img {
-    background: #fff;
-    border-color: #aaa #ccc #ddd #bbb;
-    border-style: solid;
-    border-width: 1px;
-    color: inherit;
-    padding: 2px;
-    vertical-align: top;
-    width: 200px;
-    height: 150px;
+.demo-card img,
+.demo-card video {
+    aspect-ratio: 4 / 3;
+    background: #08090c;
+    border: 1px solid var(--rule-soft);
+    display: block;
+    object-fit: cover;
+    width: 100%;
 }
 
-.hoverbox li {
-    background: #eee;
-    border-color: #ddd #bbb #aaa #ccc;
-    border-style: solid;
-    border-width: 1px;
-    color: inherit;
-    display: inline;
-    float: left;
-    margin: 3px;
-    padding: 5px;
-    position: relative;
+.demo-card span {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    margin-top: 0.45rem;
 }
 
-.hoverbox .preview {
-    border-color: #000;
-    width: 400px;
-    height: 300px;
+.demo-card:active {
+    transform: scale(0.99);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .demo-card:hover {
+        border-color: var(--rule);
+        box-shadow: 0 0.55rem 1.5rem rgb(17 17 17 / 8%);
+        transform: translateY(-2px);
+    }
 }
