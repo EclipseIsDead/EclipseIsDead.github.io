@@ -4,6 +4,7 @@
         <title>Siddarth Dagar</title>
         <link rel="icon" type="image/png" href="assets/favicon.png" />
         <link rel="stylesheet" href="assets/style.css" />
+        <script defer src="assets/latex.js"></script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
@@ -229,11 +230,32 @@
                     become APIs, SDKs, runtime metadata, form renderers, validation
                     layers, permissions, and migration boundaries.
                 </p>
-                <pre>YAML schema
-  -> parser / generator
-  -> Python + TypeScript + OpenAPI + SDK
-  -> runtime type information
-  -> dynamic forms, pickers, validation, docs, and tools</pre>
+                <figure class="diagram" aria-labelledby="home-types-diagram">
+                    <div class="diagram-track">
+                        <div class="diagram-node">
+                            <strong>Schema</strong>
+                            <span>YAML source of truth</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Generator</strong>
+                            <span>parser, gates, metadata pass</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Typed surface</strong>
+                            <span>Python, TypeScript, API wrappers</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Runtime tools</strong>
+                            <span>forms, pickers, validation, docs</span>
+                        </div>
+                    </div>
+                    <figcaption id="home-types-diagram">
+                        One declaration becomes compile-time types and runtime behavior.
+                    </figcaption>
+                </figure>
             </details>
 
             <details class="system-note">
@@ -244,10 +266,32 @@
                     reconstructed after restart. Good infrastructure makes recovery
                     boring.
                 </p>
-                <pre>event -> queue -> control plane -> worker
-  ^          |           |
-  |          v           v
-  +---- ack state   lifecycle/status reconciliation</pre>
+                <figure class="diagram" aria-labelledby="home-recovery-diagram">
+                    <div class="diagram-loop">
+                        <div class="diagram-node">
+                            <strong>External event</strong>
+                            <span>Slack, GitHub, Jira, web</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Durable queue</strong>
+                            <span>input, ack, replay state</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Control plane</strong>
+                            <span>reconciles queue, pod, and status signals</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Worker</strong>
+                            <span>does work, emits lifecycle and outcome</span>
+                        </div>
+                    </div>
+                    <figcaption id="home-recovery-diagram">
+                        The useful system is the loop, not the happy-path arrow.
+                    </figcaption>
+                </figure>
             </details>
 
             <details class="system-note">

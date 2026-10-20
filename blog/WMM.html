@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>The World Master's Manual - Siddarth Dagar</title>
+        <link rel="icon" type="image/png" href="../assets/favicon.png" />
+        <link rel="stylesheet" href="../assets/style.css" />
+        <script defer src="../assets/latex.js"></script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <main>
+            <header class="site-header">
+                <h1>The World Master's Manual: An Ontology-Driven Worldbuilding Environment</h1>
+                <nav class="nav-links" aria-label="Primary">
+                    <a href="../index.html">Home</a>
+                    <a href="../blog.html">Blog</a>
+                </nav>
+            </header>
+
+            <hr />
+
+            <article>
+                <p class="lede">
+                    The World Master's Manual (WMM for short) is an environment for people to
+                    build their world, define concepts within said world, record relationships
+                    between concepts, infer conclusions from said concepts and relationships,
+                    and check their world's consistency.
+               </p>
+               <aside class="margin-note">
+                   More on why it doesn't need to be Lean-like later...
+               </aside>
+               <p class="lede">
+                    Think of it like a steerable Dwarf Fortress, but with a worse UI. It's a
+                    tool with which you can design your world, and then work with an agent
+                    to push said world forward. I'd like to call it "Lean for Loremasters"
+                    but it's not a proof checker, nor does it need to be.
+                </p>
+
+                <nav aria-labelledby="contents-heading">
+                    <h2 id="contents-heading">Contents</h2>
+                    <ol>
+                        <li><a href="#overview">Why World Master Manual?</a></li>
+                        <li><a href="#type-system">The Type System</a></li>
+                        <li><a href="#world-engine">The World Engine</a></li>
+                        <li><a href="#worked-example">A Worked Example</a></li>
+                        <li><a href="#trade-offs">Design Trade-offs</a></li>
+                        <li><a href="#next-steps">What Comes Next</a></li>
+                    </ol>
+                </nav>
+
+                <section id="overview">
+                    <h2>Why World Master Manual?</h2>
+                    <p>
+                        I run a Dungeons and Dragons campaign that's been going on for over
+                        a year and a half now. My general workflow is whenever I have an idea
+                        I write it down (this takes anywhere from 5 minutes to 3 hours) and then
+                        sit on it for at least a week. If I still like it, and there are no holes,
+                        and it seems fun then I keep it. But after doing this for so long, the sheer
+                        bloat of my Obsidian Repo has reached a point where I consistently run into:
+                        <nav aria-labelledby="problems-heading">
+                            <h2 id="problems-heading">BIG ISSUES</h2>
+                            <ol>
+                                <li><a href="#overview">Why World Master Manual?</a></li>
+                                <li><a href="#type-system">The Type System</a></li>
+                                <li><a href="#world-engine">The World Engine</a></li>
+                                <li><a href="#worked-example">A Worked Example</a></li>
+                                <li><a href="#trade-offs">Design Trade-offs</a></li>
+                                <li><a href="#next-steps">What Comes Next</a></li>
+                            </ol>
+                        </nav>
+                    </p>
+                    <p>
+                        [Give a high-level picture of the project. Explain what
+                        the type system handles, what the world engine handles,
+                        and how the two relate.]
+                    </p>
+                    <ul>
+                        <li>[Design goal: what should WMM make possible?]</li>
+                        <li>[Design goal: what should it make easier or safer?]</li>
+                        <li>[Non-goal: what is deliberately outside its scope?]</li>
+                    </ul>
+                </section>
+
+                <section id="type-system">
+                    <h2>The Type System</h2>
+                    <p>
+                        [Explain what a type means in WMM and why you chose this
+                        model. Define any terminology the reader needs before
+                        getting into the details.]
+                    </p>
+
+                    <h3>Core Types and Relationships</h3>
+                    <p>
+                        [Introduce the fundamental types and how they relate or
+                        compose. Use one small example that you can carry through
+                        the rest of the post.]
+                    </p>
+                    <pre><code>[Minimal type definition]
+[An instance of that type]
+[A relationship or composition example]</code></pre>
+                    <p>
+                        [Walk through the example. Explain what each part means
+                        and which details are important to the design.]
+                    </p>
+
+                    <h3>Rules and Validation</h3>
+                    <p>
+                        [Explain which rules the type system enforces and when
+                        they are checked. What is accepted, what is rejected,
+                        and what feedback does the author receive?]
+                    </p>
+                    <pre><code>[Valid example]
+[Invalid example]
+[The resulting validation error]</code></pre>
+                </section>
+
+                <section id="world-engine">
+                    <h2>The World Engine</h2>
+                    <p>
+                        [Introduce the engine's responsibilities. What does it
+                        take as input, what does it keep track of, and what does
+                        it produce?]
+                    </p>
+
+                    <h3>Representing a World</h3>
+                    <p>
+                        [Describe how world state is represented and how it uses
+                        the types introduced above. Explain the distinction
+                        between a definition and a live instance, if applicable.]
+                    </p>
+                    <pre><code>[A minimal world definition or state snapshot]</code></pre>
+
+                    <h3>Execution and State Changes</h3>
+                    <p>
+                        [Explain how the engine processes an action, event, or
+                        update. Describe the order of operations and how it keeps
+                        the world consistent.]
+                    </p>
+                    <ol>
+                        <li>[What starts an update?]</li>
+                        <li>[What rules or constraints are evaluated?]</li>
+                        <li>[How is the resulting state applied or reported?]</li>
+                    </ol>
+
+                    <details class="system-note">
+                        <summary>Implementation Notes</summary>
+                        <p>
+                            [Optional deeper dive: explain an internal data
+                            structure, execution detail, or edge case without
+                            interrupting the main explanation. Remove this block
+                            if it is not needed.]
+                        </p>
+                    </details>
+                </section>
+
+                <section id="worked-example">
+                    <h2>A Worked Example</h2>
+                    <p>
+                        [Bring the type system and world engine together in one
+                        small scenario. State the starting conditions and what
+                        you want to happen.]
+                    </p>
+                    <pre><code>[Starting world state]
+[Input or action]
+[Relevant type checks or rules]
+[Resulting world state or output]</code></pre>
+                    <p>
+                        [Walk through the result. What did the type system
+                        guarantee, and what did the engine do? Show a failure
+                        case too, if it helps explain the boundary between them.]
+                    </p>
+                </section>
+
+                <section id="trade-offs">
+                    <h2>Design Trade-offs</h2>
+                    <p>
+                        [Discuss a decision that was not obvious. What
+                        alternatives did you consider, why did you choose this
+                        approach, and what does it cost?]
+                    </p>
+                    <ul>
+                        <li>[What works well in the current design?]</li>
+                        <li>[What limitation or open question remains?]</li>
+                        <li>[What would you change with hindsight?]</li>
+                    </ul>
+                </section>
+
+                <section id="next-steps">
+                    <h2>What Comes Next</h2>
+                    <p>
+                        [Summarize the main idea you want the reader to take
+                        away. Distinguish what is implemented today from what
+                        you plan to build next.]
+                    </p>
+                    <p>
+                        [Add links to the source code, documentation, a demo, or
+                        a follow-up post when they are ready.]
+                    </p>
+                </section>
+            </article>
+        </main>
+    </body>
+</html>

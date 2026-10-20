@@ -4,6 +4,7 @@
         <title>Work - Siddarth Dagar</title>
         <link rel="icon" type="image/png" href="assets/favicon.png" />
         <link rel="stylesheet" href="assets/style.css" />
+        <script defer src="assets/latex.js"></script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
@@ -35,6 +36,12 @@
                 product workflows that fit into mature systems.
             </p>
 
+            <aside class="margin-note">
+                <strong>How to read this.</strong> The through-line is not one stack
+                or one job title. It is turning repeated complexity into reusable
+                platform primitives.
+            </aside>
+
             <h2 id="training-module">Training Module MVP</h2>
             <article class="case-study">
                 <p class="case-meta">
@@ -48,12 +55,46 @@
                     security builders, permission models, cached parsing, and phase
                     workflow machinery.
                 </p>
-                <pre>training module
-  -> page
-      -> block
-          -> question
-              -> answer        admin-created, admin-readable
-              -> response      learner-created, admin/creator split</pre>
+                <figure class="diagram" aria-labelledby="training-module-diagram">
+                    <div class="diagram-spine">
+                        <div class="diagram-node">
+                            <strong>Training module</strong>
+                            <span>security root and workflow container</span>
+                        </div>
+                        <div class="diagram-down" aria-hidden="true">↓</div>
+                        <div class="diagram-node">
+                            <strong>Page</strong>
+                            <span>ordered learner-facing step</span>
+                        </div>
+                        <div class="diagram-down" aria-hidden="true">↓</div>
+                        <div class="diagram-node">
+                            <strong>Block</strong>
+                            <span>layout and content boundary</span>
+                        </div>
+                        <div class="diagram-down" aria-hidden="true">↓</div>
+                        <div class="diagram-node">
+                            <strong>Question</strong>
+                            <span>prompt, constraints, response type</span>
+                        </div>
+                    </div>
+                    <div class="diagram-split">
+                        <div class="diagram-branch">
+                            <strong>Answer</strong>
+                            <span>admin-created; admin-readable; independent grant</span>
+                        </div>
+                        <div class="diagram-branch">
+                            <strong>Response</strong>
+                            <span>learner-created; creator/admin read split</span>
+                        </div>
+                    </div>
+                    <div class="diagram-key">
+                        <span>pages, blocks, questions proxy through module</span>
+                        <span>answers do not leak to learners</span>
+                    </div>
+                    <figcaption id="training-module-diagram">
+                        The hierarchy is simple; the permission boundary is the product.
+                    </figcaption>
+                </figure>
                 <p>
                     The important design pressure was isolation. Admins create and
                     read correct answers; learners can only submit responses. That
@@ -79,11 +120,50 @@
                     TypeScript types, API wrappers, OpenAPI metadata, SDK types, and
                     runtime type information.
                 </p>
-                <pre>YAML TypeSpec
-  -> parser
-  -> generated Python + TypeScript + API metadata
-  -> RTTI walker
-  -> dynamic forms, pickers, validation, and internal tools</pre>
+                <figure class="diagram" aria-labelledby="typespec-diagram">
+                    <div class="diagram-track">
+                        <div class="diagram-node">
+                            <strong>TypeSpec YAML</strong>
+                            <span>shape, imports, ext_info, endpoints</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Parser</strong>
+                            <span>resolves concrete and parameterized specs</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Generator</strong>
+                            <span>Python, TypeScript, OpenAPI, SDK</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>RTTI walker</strong>
+                            <span>runtime structure for generic tooling</span>
+                        </div>
+                    </div>
+                    <div class="diagram-branches four">
+                        <div class="diagram-branch">
+                            <strong>Forms</strong>
+                            <span>fields, layout, constraints</span>
+                        </div>
+                        <div class="diagram-branch">
+                            <strong>Pickers</strong>
+                            <span>entity references and labels</span>
+                        </div>
+                        <div class="diagram-branch">
+                            <strong>Validation</strong>
+                            <span>runtime rules from schema metadata</span>
+                        </div>
+                        <div class="diagram-branch">
+                            <strong>Docs &amp; clients</strong>
+                            <span>typed API and SDK surfaces</span>
+                        </div>
+                    </div>
+                    <figcaption id="typespec-diagram">
+                        Parameterization matters because every generated surface inherits the abstraction.
+                    </figcaption>
+                </figure>
                 <p>
                     The hard part was not adding syntax. It touched the parser,
                     runtime type-information walking logic, spec definitions,
@@ -96,6 +176,11 @@
                     infrastructure when runtime metadata drives UI, validation,
                     docs, API clients, and platform configuration.
                 </p>
+                <aside class="margin-note">
+                    <strong>Core design idea.</strong> Types are not paperwork. In
+                    mature systems, they are the load-bearing beams for product,
+                    docs, SDKs, validation, and generic tooling.
+                </aside>
             </article>
 
             <h2 id="hmr">Backend Hot Module Reloading</h2>
@@ -109,11 +194,38 @@
                     long-running local services reload code without disruptive manual
                     restarts.
                 </p>
-                <pre>code change
-  -> invalidate affected modules
-  -> check server lifecycle phase
-  -> clear reloadable caches
-  -> route next request/job through fresh code</pre>
+                <figure class="diagram" aria-labelledby="hmr-diagram">
+                    <div class="diagram-track">
+                        <div class="diagram-node">
+                            <strong>Code change</strong>
+                            <span>developer edits backend path</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Invalidation</strong>
+                            <span>clear affected modules and caches</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Phase gate</strong>
+                            <span>respect server lifecycle boundary</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Fresh route</strong>
+                            <span>next request or job sees new code</span>
+                        </div>
+                    </div>
+                    <div class="diagram-key">
+                        <span>web server</span>
+                        <span>ML server</span>
+                        <span>async job server</span>
+                        <span>LLM routes</span>
+                    </div>
+                    <figcaption id="hmr-diagram">
+                        HMR is a lifecycle problem, not just a file-watcher problem.
+                    </figcaption>
+                </figure>
                 <p>
                     The core idea was phase-aware reload boundaries. Different
                     servers had different routing paths and lifecycle constraints, so
@@ -125,6 +237,11 @@
                     iteration costs repeatedly. Fast backend loops are product
                     infrastructure even when users never see them.
                 </p>
+                <aside class="margin-note">
+                    <strong>Invisible leverage.</strong> A one-second local-loop win
+                    can beat a flashy feature if the whole team pays that cost all
+                    day.
+                </aside>
             </article>
 
             <h2 id="llm-alerts">LLM Alert Pipeline</h2>
@@ -138,12 +255,32 @@
                     structured recommendations, sidepanel UI, and contextual chat
                     handoff.
                 </p>
-                <pre>platform context
-  -> LLM capability + phased prompt
-  -> tools
-  -> alert decision
-  -> structured recommendation
-  -> sidepanel + chat handoff</pre>
+                <figure class="diagram" aria-labelledby="llm-alert-diagram">
+                    <div class="diagram-track">
+                        <div class="diagram-node">
+                            <strong>Context</strong>
+                            <span>platform data and alert target</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Capability</strong>
+                            <span>model plumbing and phased prompt</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Tools</strong>
+                            <span>query, inspect, decide with fewer turns</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Product handoff</strong>
+                            <span>alert, sidepanel, structured chat</span>
+                        </div>
+                    </div>
+                    <figcaption id="llm-alert-diagram">
+                        The interface is only good if the agentic loop is efficient enough to feel useful.
+                    </figcaption>
+                </figure>
                 <p>
                     The main design tradeoff was turn efficiency. The prompt and
                     tool design needed to reduce roundtrips without hardcoding away
@@ -164,13 +301,45 @@
                     lifecycle events, and message-consumer state into spawn,
                     recovery, cleanup, and status-publishing actions.
                 </p>
-                <pre>external event
-  -> ingress
-  -> NATS JetStream input subject
-  -> control-plane reconciliation
-  -> Kubernetes Job / agent runtime
-  -> output dispatcher
-  -> Slack, GitHub, Jira, or web surface</pre>
+                <figure class="diagram" aria-labelledby="agent-orchestration-diagram">
+                    <div class="diagram-lanes">
+                        <div class="diagram-lane">
+                            <strong>Ingress</strong>
+                            <span>external systems become durable input</span>
+                            <ol>
+                                <li>Slack / GitHub / Jira / web</li>
+                                <li>routing hints and driver override</li>
+                                <li>NATS JetStream input subject</li>
+                            </ol>
+                        </div>
+                        <div class="diagram-lane">
+                            <strong>Reconciliation</strong>
+                            <span>three observations converge</span>
+                            <ol>
+                                <li>input message listener</li>
+                                <li>Kubernetes pod watcher</li>
+                                <li>consumer scanner</li>
+                            </ol>
+                        </div>
+                        <div class="diagram-lane">
+                            <strong>Dispatch</strong>
+                            <span>idempotent actions, then output</span>
+                            <ol>
+                                <li>ensure consumer / ensure dog</li>
+                                <li>publish status and task outcome</li>
+                                <li>Slack / GitHub / Jira / web surface</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="diagram-key">
+                        <span>JetStream ack state is recovery substrate</span>
+                        <span>Kubernetes Jobs are ephemeral executors</span>
+                        <span>PostgreSQL/Redis hold status and routing state</span>
+                    </div>
+                    <figcaption id="agent-orchestration-diagram">
+                        The control plane turns several imperfect signals into one boring lifecycle.
+                    </figcaption>
+                </figure>
                 <p>
                     The design is recovery-oriented: per-agent consumers track ack
                     state, Kubernetes job spawning is idempotent, and separate event
@@ -178,6 +347,11 @@
                     is simple; the real system is about making replay, eviction,
                     stale consumers, and lost acknowledgements ordinary.
                 </p>
+                <aside class="margin-note">
+                    <strong>Control-plane lens.</strong> The system is less about
+                    launching pods and more about reconciling conflicting views of
+                    truth until reality becomes boring again.
+                </aside>
             </article>
 
             <h2 id="pipeline-dag">Process Pipeline DAG Migration</h2>
@@ -191,11 +365,48 @@
                     and children. The change rippled through entity modeling, APIs,
                     callsites, workflow-aware traversal, and graph rendering.
                 </p>
-                <pre>before: parent -> child -> child
-
-after:  step --edge--> step
-        step --edge--> step
-        step --edge--> step</pre>
+                <figure class="diagram" aria-labelledby="dag-migration-diagram">
+                    <div class="diagram-graph-pair">
+                        <div class="mini-graph">
+                            <strong>Before: tree</strong>
+                            <div class="graph-row">
+                                <span class="graph-node">A</span>
+                                <span class="graph-edge">→</span>
+                                <span class="graph-node">B</span>
+                                <span class="graph-edge">→</span>
+                                <span class="graph-node">C</span>
+                            </div>
+                            <div class="graph-row">
+                                <span class="graph-node">B</span>
+                                <span class="graph-edge">→</span>
+                                <span class="graph-node">D</span>
+                            </div>
+                        </div>
+                        <div class="mini-graph">
+                            <strong>After: DAG edges</strong>
+                            <div class="graph-row">
+                                <span class="graph-node">A</span>
+                                <span class="graph-edge">→</span>
+                                <span class="graph-node">C</span>
+                            </div>
+                            <div class="graph-row">
+                                <span class="graph-node">B</span>
+                                <span class="graph-edge">→</span>
+                                <span class="graph-node">C</span>
+                                <span class="graph-edge">→</span>
+                                <span class="graph-node">E</span>
+                            </div>
+                            <div class="graph-row">
+                                <span class="graph-node">B</span>
+                                <span class="graph-edge">→</span>
+                                <span class="graph-node">D</span>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption id="dag-migration-diagram">
+                        Moving from containment to edges changes the data model, API, traversal, and layout contract.
+                    </figcaption>
+                </figure>
                 <p>
                     The UI work was nontrivial because graph layout depended on node
                     size and workflow variants. A shared graph-shell abstraction let
@@ -216,11 +427,32 @@ after:  step --edge--> step
                     static entity-detail payloads, PostgreSQL query tuning, Git
                     workflow optimization, and legacy frontend selector hygiene.
                 </p>
-                <pre>symptom
-  -> profile / trace
-  -> isolate root cause
-  -> smallest safe fix
-  -> remeasure next bottleneck</pre>
+                <figure class="diagram" aria-labelledby="performance-loop-diagram">
+                    <div class="diagram-loop">
+                        <div class="diagram-node">
+                            <strong>Symptom</strong>
+                            <span>slow page, query, local workflow, or interaction</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Trace</strong>
+                            <span>profile, inspect, count, explain analyze</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Root cause</strong>
+                            <span>recompute, repeated payload, bad selector, query shape</span>
+                        </div>
+                        <div class="diagram-arrow" aria-hidden="true">→</div>
+                        <div class="diagram-node">
+                            <strong>Small safe fix</strong>
+                            <span>ship, remeasure, find the next bottleneck</span>
+                        </div>
+                    </div>
+                    <figcaption id="performance-loop-diagram">
+                        Performance work is not a heroic rewrite; it is a measurement loop.
+                    </figcaption>
+                </figure>
                 <p>
                     One page had over 10,000 object selectors because of bad factory
                     patterns. The fix was not a clever micro-optimization; it was
