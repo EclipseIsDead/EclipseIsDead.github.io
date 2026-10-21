@@ -38,10 +38,10 @@
                     and check their world's consistency.
                </p>
                <aside class="margin-note">
-                   More on why it doesn't need to be Lean-like later...
+                   More on why it doesn't need to be <a href="https://lean-lang.org/">Lean</a>-like later...
                </aside>
                <p class="lede">
-                    Think of it like a steerable Dwarf Fortress, but with a worse UI. It's a
+                    Think of it like a steerable <a href="https://www.bay12games.com/dwarves/">Dwarf Fortress</a>, but with a worse UI. It's a
                     tool with which you can design your world, and then work with an agent
                     to push said world forward. I'd like to call it "Lean for Loremasters"
                     but it's not a proof checker, nor does it need to be.
@@ -51,12 +51,12 @@
                 <section id="overview">
                     <h2>Why World Master Manual?</h2>
                     <p class="problems-intro">
-                        I run a <span class="dnd-wordmark">Dungeons <span class="dnd-ampersand">&amp;</span> Dragons</span> campaign that's been going on for over
+                        I run a <a class="dnd-wordmark" href="https://www.dndbeyond.com/">Dungeons <span class="dnd-ampersand">&amp;</span> Dragons</a> campaign that's been going on for over
                         a year and a half now. My general workflow is whenever I have an idea
                         I write it down (this takes anywhere from 5 minutes to 3 hours) and then
                         sit on it for at least a week. If I still like it, and there are no holes,
                         and it seems fun then I keep it. But after doing this for so long, the sheer
-                        bloat of my Obsidian Repo has reached a point where I
+                        bloat of my <a href="https://obsidian.md/">Obsidian</a> Repo has reached a point where I
                         consistently run into<span class="problems-arrow" aria-hidden="true"> ↴</span>
                     </p>
                     <div class="problems-callout" aria-labelledby="problems-heading">
@@ -77,7 +77,7 @@
                     </aside>
                     <p>
                         One day, when I was playing around with the idea of typing my world,
-                        I discovered the <em>CIDOC Conceptual Reference Model</em>! CIDOC CRM is a
+                        I discovered the <em><a href="https://cidoc-crm.org/">CIDOC Conceptual Reference Model</a></em>! CIDOC CRM is a
                         "theoretical and practical tool for information integration in the field
                         of cultural heritage" or more casually it's an intelligent way of concretely
                         defining abstract concepts like events and entities within a historical context.
@@ -86,7 +86,7 @@
                         From there, I realized if you have the ontologies, you can begin writing axioms.
                         Then, we can build a "snapshot" of the world based on entities and events. Then,
                         we can validate said snapshot by evaluating pregenerated constraints. This then
-                        lets us slap on Git concepts like branches and commits, and lets us introduce
+                        lets us slap on <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell">Git concepts</a> like branches and commits, and lets us introduce
                         our own concepts like "retcons" and "proposals". Everything after that is just
                         UI gravy so of course I'd like to interact with this through Obsidian and some
                         sort of agent harness to handle porting and consulting.
@@ -126,8 +126,8 @@
                     <h2>A Brief Technical Example</h2>
                     <p>
                         I think the easiest way to showcase this is through a worked example. First, I'd like to
-                        highlight <em>Protégé, OWL and HermiT</em> as close analogues to WMM. Protégé is an editor
-                        for ontologies: for us this is CIDOC CRM implemented in TypeScript. OWL is the language
+                        highlight <em><a href="https://protege.stanford.edu/">Protégé</a>, <a href="https://www.w3.org/TR/owl2-overview/">OWL</a> and <a href="https://www.hermit-reasoner.com/">HermiT</a></em> as close analogues to WMM. Protégé is an editor
+                        for ontologies: for us this is CIDOC CRM implemented in <a href="https://www.typescriptlang.org/">TypeScript</a>. OWL is the language
                         used to express those definitions and HermiT is a small kernel that judges the validity
                         of any given OWL ontology, as well as infers the relationships between these classes.
                     </p>
@@ -155,7 +155,7 @@
     is an adult,
     and is alive.</code></pre>
                     <p>
-                        Then record these as properties under <em>Charlemagne</em> and <em>Carloman I</em>. I do not
+                        Then record these as properties under <em><a href="https://en.wikipedia.org/wiki/Charlemagne">Charlemagne</a></em> and <em><a href="https://en.wikipedia.org/wiki/Carloman_I">Carloman I</a></em>. I do not
                         need to say "Oh by the way, these two are eligible heirs to the throne", my reasoner will do
                         that for me. And my reasoner could also infer a succession crisis is soon to follow from this
                         if these two exist at the same time...
@@ -165,8 +165,8 @@
                         I define the concepts and relationships, and ask <em>what comes next.</em>
                     </p>
                     <p>
-                        <em>Soufflé</em> is a super cool example of the evaluation engine I want to emulate. It's a
-                        statically typed Datalog system, so you declare some typed relations, supply facts, etc.
+                        <em><a href="https://souffle-lang.github.io/">Soufflé</a></em> is a super cool example of the evaluation engine I want to emulate. It's a
+                        statically typed <a href="https://souffle-lang.github.io/tutorial">Datalog</a> system, so you declare some typed relations, supply facts, etc.
                         and then write out the rules that derive other relations. Its type checker then checks how
                         certain relational attributes are used in said rules. Let's continue with the previous example:
                     </p>
@@ -203,7 +203,7 @@ Eligible(CarlomanI, CrownOfTheFranks)</code></pre>
                 <section id="type-system">
                     <h2>The Type System</h2>
                     <p>
-                        To be clear I am not referring to the TypeScript Interface.
+                        To be clear I am not referring to the <a href="https://www.typescriptlang.org/docs/handbook/2/objects.html">TypeScript Interface</a>.
                     </p>
 
                     <h3>Core Types and Relationships</h3>
@@ -330,7 +330,7 @@ Illustrative diagnostic:
                     <p>
                         THIS is where the agent belongs in this application. It could retrieve the succession rules,
                         existing factions, prior disputes, and neighboring states, then propose a coup, a council
-                        settlement, or even a partition! Better yet, it could use Wikipedia, realize that perhaps
+                        settlement, or even a partition! Better yet, it could use <a href="https://www.wikipedia.org/">Wikipedia</a>, realize that perhaps
                         I was heavily inspired by real life events and propose a realistic finale! Those are possible
                         developments which go beyond simple deductions.
                     </p>
@@ -349,7 +349,7 @@ Illustrative diagnostic:
                     <p>
                         This should draft a new proposal, that I can review and verify myself. If I like it,
                         I'll add it to the canon. If not, well poor Charlemagne. I do think the most interesting thing here
-                        is that you can see a clear open-world distinction: missing information does not
+                        is that you can see a clear <a href="https://www.w3.org/TR/owl2-primer/#Introduction">open-world</a> distinction: missing information does not
                         automatically make a proposition false. This is the axiom that creates the concept of "open-world".
                         Furthermore, I need a way to port my world into this system... and I am not doing that by hand.
                     </p>
