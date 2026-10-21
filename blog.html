@@ -23,6 +23,10 @@
 
             <ul id="blog-list" class="post-list">
                 <li>
+                    <a href="blog/WMM.html">The World Master's Manual: An Ontology-Driven Worldbuilding Environment</a>
+                    <time datetime="2026-10-20">Oct 20, 2026</time>
+                </li>
+                <li>
                     <a href="blog/jacobian-counterexample.html"
                         >A Counterexample to the Jacobian Conjecture</a
                     >
@@ -59,41 +63,47 @@
             (async () => {
                 const list = document.getElementById("blog-list");
                 const knownPosts = {
+                    "WMM.html": {
+                        title: "The World Master's Manual: An Ontology-Driven Worldbuilding Environment",
+                        date: "Oct 20, 2026",
+                        datetime: "2026-10-20",
+                        order: 0,
+                    },
                     "jacobian-counterexample.html": {
                         title: "A Counterexample to the Jacobian Conjecture",
                         date: "Jul 21, 2026",
                         datetime: "2026-07-21",
-                        order: 0,
+                        order: 1,
                     },
                     "descent n' desire.html": {
                         title: "Descent & Desire: Dev Log #1",
                         date: "Apr 17, 2025",
                         datetime: "2025-04-17",
-                        order: 1,
+                        order: 2,
                     },
                     "planner.html": {
                         title: "D&D 5e Dungeon Planner",
                         date: "Feb 6, 2025",
                         datetime: "2025-02-06",
-                        order: 2,
+                        order: 3,
                     },
                     "website.html": {
                         title: "Web Dev as a Whole",
                         date: "Jul 16, 2024",
                         datetime: "2024-07-16",
-                        order: 3,
+                        order: 4,
                     },
                     "asteroids.html": {
                         title: "Asteroids.asm",
                         date: "Jul 15, 2024",
                         datetime: "2024-07-15",
-                        order: 4,
+                        order: 5,
                     },
                     "neuralink.html": {
                         title: "The Neuralink Compression Challenge",
                         date: "Jun 12, 2024",
                         datetime: "2024-06-12",
-                        order: 5,
+                        order: 6,
                     },
                 };
 

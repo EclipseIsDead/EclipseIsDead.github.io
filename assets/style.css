@@ -136,6 +136,64 @@ body > div {
     text-align: left;
 }
 
+.takeaway {
+    border-left: 2px solid var(--rule);
+    font-size: 1.15rem;
+    hyphens: none;
+    line-height: calc(var(--line) * 1.1);
+    margin: calc(var(--line) * 1.5) 0;
+    padding: 0.25rem 0 0.25rem 1rem;
+    text-align: left;
+}
+
+.dnd-wordmark {
+    color: #b21b20;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1em;
+    font-variant-caps: small-caps;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+}
+
+.dnd-ampersand {
+    font-style: italic;
+    letter-spacing: -0.08em;
+}
+
+.problems-intro {
+    margin-bottom: 0;
+}
+
+
+.problems-arrow {
+    display: inline-block;
+    font-size: 1.5em;
+    font-style: normal;
+    line-height: 1;
+    transform: translateY(0.35em);
+    vertical-align: middle;
+}
+
+.problems-callout {
+    margin: 0.35rem 0 var(--line);
+}
+
+.problems-title {
+    background: linear-gradient(transparent 72%, var(--paper) 72%);
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    line-height: 1.05;
+    margin: 0 0 var(--line);
+    max-width: 100%;
+    padding: 0.1rem 0.15rem 0.25rem;
+    transform: rotate(-2deg);
+    transform-origin: left center;
+    width: fit-content;
+}
+
 .post-date {
     color: var(--muted);
     font-family: var(--font-mono);
@@ -223,6 +281,50 @@ pre code {
     background: transparent;
     font-size: inherit;
     padding: 0;
+}
+
+.cli {
+    background: #171717;
+    border: 1px solid #383838;
+    border-radius: 0.25rem;
+    color: #f5f5f0;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    margin: var(--line) 0;
+    overflow: hidden;
+}
+
+.cli-header {
+    border-bottom: 1px solid #383838;
+    color: #b8b8b2;
+    display: flex;
+    font-size: 0.7rem;
+    gap: 1rem;
+    justify-content: space-between;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    padding: 0.65rem 1rem;
+    text-transform: uppercase;
+}
+
+.cli-command {
+    align-items: baseline;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1ch minmax(0, 1fr);
+    line-height: 1.65;
+    padding: 1rem;
+}
+
+.cli-prompt {
+    color: #b8b8b2;
+    user-select: none;
+}
+
+.cli-input {
+    font: inherit;
+    overflow-wrap: anywhere;
+    white-space: normal;
 }
 
 .math-display {
@@ -502,6 +604,91 @@ hr::after {
     line-height: 1.45;
     margin-top: calc(var(--line) * 0.6);
     text-align: left;
+}
+
+.world-stack {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.world-stack figcaption {
+    margin: 0 0 calc(var(--line) * 0.6);
+}
+
+.world-stack-layers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.world-stack-layers > li {
+    margin: 0;
+    padding: 0.65rem 0.85rem;
+}
+
+.world-stack-layers > li + li {
+    border-top: 0;
+}
+
+.world-stack-layers > li:last-child {
+    background: var(--paper);
+    border-bottom-color: var(--rule);
+}
+
+.reasoning-flow {
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    list-style: none;
+    margin: calc(var(--line) * 1.25) 0;
+    padding: 0;
+}
+
+.reasoning-flow > li {
+    border-top: var(--rule-width) solid var(--rule-soft);
+    margin: 0;
+    padding: 0.65rem 0 0;
+    position: relative;
+}
+
+.reasoning-label {
+    color: var(--muted);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.35rem;
+}
+
+.reasoning-flow em {
+    display: block;
+    text-wrap: balance;
+}
+
+.reasoning-arrow {
+    color: var(--muted);
+    position: absolute;
+    right: -1.35rem;
+    top: 0.65rem;
+}
+
+@media (max-width: 600px) {
+    .reasoning-flow {
+        gap: 0.75rem;
+        grid-template-columns: 1fr;
+    }
+
+    .reasoning-flow > li:not(:last-child) {
+        padding-bottom: 1.75rem;
+    }
+
+    .reasoning-arrow {
+        bottom: 0;
+        left: 0;
+        right: auto;
+        top: auto;
+        transform: rotate(90deg);
+    }
 }
 
 .diagram-track,

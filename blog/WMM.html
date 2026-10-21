@@ -7,6 +7,15 @@
         <script defer src="../assets/latex.js"></script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Designing the World Master's Manual: ontology-driven worldbuilding with typed relationships, inspectable inference, versioned canon, and author-steered agents." />
+        <link rel="canonical" href="https://eclipseisdead.github.io/blog/WMM.html" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="The World Master's Manual: An Ontology-Driven Worldbuilding Environment" />
+        <meta property="og:description" content="Ontology-driven worldbuilding with typed relationships, inspectable inference, versioned canon, and author-steered agents." />
+        <meta property="og:url" content="https://eclipseisdead.github.io/blog/WMM.html" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="The World Master's Manual" />
+        <meta name="twitter:description" content="Ontology-driven worldbuilding with typed relationships, inspectable inference, and versioned canon." />
     </head>
     <body>
         <main>
@@ -21,6 +30,7 @@
             <hr />
 
             <article>
+                <p class="post-date">Design in progress · V1 is still in development.</p>
                 <p class="lede">
                     The World Master's Manual (WMM for short) is an environment for people to
                     build their world, define concepts within said world, record relationships
@@ -37,165 +47,325 @@
                     but it's not a proof checker, nor does it need to be.
                 </p>
 
-                <nav aria-labelledby="contents-heading">
-                    <h2 id="contents-heading">Contents</h2>
-                    <ol>
-                        <li><a href="#overview">Why World Master Manual?</a></li>
-                        <li><a href="#type-system">The Type System</a></li>
-                        <li><a href="#world-engine">The World Engine</a></li>
-                        <li><a href="#worked-example">A Worked Example</a></li>
-                        <li><a href="#trade-offs">Design Trade-offs</a></li>
-                        <li><a href="#next-steps">What Comes Next</a></li>
-                    </ol>
-                </nav>
 
                 <section id="overview">
                     <h2>Why World Master Manual?</h2>
-                    <p>
-                        I run a Dungeons and Dragons campaign that's been going on for over
+                    <p class="problems-intro">
+                        I run a <span class="dnd-wordmark">Dungeons <span class="dnd-ampersand">&amp;</span> Dragons</span> campaign that's been going on for over
                         a year and a half now. My general workflow is whenever I have an idea
                         I write it down (this takes anywhere from 5 minutes to 3 hours) and then
                         sit on it for at least a week. If I still like it, and there are no holes,
                         and it seems fun then I keep it. But after doing this for so long, the sheer
-                        bloat of my Obsidian Repo has reached a point where I consistently run into:
-                        <nav aria-labelledby="problems-heading">
-                            <h2 id="problems-heading">BIG ISSUES</h2>
-                            <ol>
-                                <li><a href="#overview">Why World Master Manual?</a></li>
-                                <li><a href="#type-system">The Type System</a></li>
-                                <li><a href="#world-engine">The World Engine</a></li>
-                                <li><a href="#worked-example">A Worked Example</a></li>
-                                <li><a href="#trade-offs">Design Trade-offs</a></li>
-                                <li><a href="#next-steps">What Comes Next</a></li>
-                            </ol>
-                        </nav>
+                        bloat of my Obsidian Repo has reached a point where I
+                        consistently run into<span class="problems-arrow" aria-hidden="true"> ↴</span>
+                    </p>
+                    <div class="problems-callout" aria-labelledby="problems-heading">
+                        <h3 class="problems-title" id="problems-heading">BIG PROBLEMS</h3>
+                        <ol>
+                            <li>I reinvent something I already thought of because I forgot.</li>
+                            <li>I lose track of why I made a decision, or what it even was.</li>
+                            <li>I lose a piece of my "writing voice" because it's been too long.</li>
+                            <li>I wrote something that contradicts something else.</li>
+                            <li>I'm reusing/rehashing the same bits/ideas/events/tropes.</li>
+                        </ol>
+                    </div>
+                    <aside class="margin-note">
+                        "Intelligently" here is less so referring to the actual properties of the types
+                        and is more so referring to the design choices of the descriptions. CIDOC CRM is
+                        specifically designed to maximize understanding of cultural heritage information
+                        by placing emphasis on inferences and relationships between definitions.
+                    </aside>
+                    <p>
+                        One day, when I was playing around with the idea of typing my world,
+                        I discovered the <em>CIDOC Conceptual Reference Model</em>! CIDOC CRM is a
+                        "theoretical and practical tool for information integration in the field
+                        of cultural heritage" or more casually it's an intelligent way of concretely
+                        defining abstract concepts like events and entities within a historical context.
                     </p>
                     <p>
-                        [Give a high-level picture of the project. Explain what
-                        the type system handles, what the world engine handles,
-                        and how the two relate.]
+                        From there, I realized if you have the ontologies, you can begin writing axioms.
+                        Then, we can build a "snapshot" of the world based on entities and events. Then,
+                        we can validate said snapshot by evaluating pregenerated constraints. This then
+                        lets us slap on Git concepts like branches and commits, and lets us introduce
+                        our own concepts like "retcons" and "proposals". Everything after that is just
+                        UI gravy so of course I'd like to interact with this through Obsidian and some
+                        sort of agent harness to handle porting and consulting.
                     </p>
-                    <ul>
-                        <li>[Design goal: what should WMM make possible?]</li>
-                        <li>[Design goal: what should it make easier or safer?]</li>
-                        <li>[Non-goal: what is deliberately outside its scope?]</li>
-                    </ul>
+                    <figure class="diagram world-stack">
+                        <figcaption>The World Master's Manual — A Cake Diagram</figcaption>
+                        <ol class="world-stack-layers" aria-label="Architecture layers, from authoring to foundations" role="list">
+                            <li class="diagram-node">
+                                <strong>Authoring &amp; Interoperability</strong>
+                                <span>Editor, graphs, Obsidian, import/export</span>
+                            </li>
+                            <li class="diagram-node">
+                                <strong>Agent Orchestration</strong>
+                                <span>Context, models, tools, user steering</span>
+                            </li>
+                            <li class="diagram-node">
+                                <strong>Canon &amp; Versioning</strong>
+                                <span>Proposals, commits, retcons, branches</span>
+                            </li>
+                            <li class="diagram-node">
+                                <strong>Rules &amp; Validation</strong>
+                                <span>Constraints, consistency, plausibility</span>
+                            </li>
+                            <li class="diagram-node">
+                                <strong>World State</strong>
+                                <span>Entities, relationships, facts, events</span>
+                            </li>
+                            <li class="diagram-node">
+                                <strong>Ontology / World Type System</strong>
+                                <span>Concepts, properties, relations, axioms</span>
+                            </li>
+                        </ol>
+                    </figure>
+                </section>
+
+                <section id="technical-overview">
+                    <h2>A Brief Technical Example</h2>
+                    <p>
+                        I think the easiest way to showcase this is through a worked example. First, I'd like to
+                        highlight <em>Protégé, OWL and HermiT</em> as close analogues to WMM. Protégé is an editor
+                        for ontologies: for us this is CIDOC CRM implemented in TypeScript. OWL is the language
+                        used to express those definitions and HermiT is a small kernel that judges the validity
+                        of any given OWL ontology, as well as infers the relationships between these classes.
+                    </p>
+                    <ol class="reasoning-flow" aria-label="From authoring to inference" role="list">
+                        <li>
+                            <span class="reasoning-label">Protégé</span>
+                            <em>“What am I creating?”</em>
+                            <span class="reasoning-arrow" aria-hidden="true">→</span>
+                        </li>
+                        <li>
+                            <span class="reasoning-label">OWL</span>
+                            <em>“What am I implying?”</em>
+                            <span class="reasoning-arrow" aria-hidden="true">→</span>
+                        </li>
+                        <li>
+                            <span class="reasoning-label">HermiT</span>
+                            <em>“What follows from this?”</em>
+                        </li>
+                    </ol>
+                    <p>
+                        So, hypothetically, if I wanted to design a simple succession model to some regency I'd do:
+                    </p>
+                    <pre><code>An eligible heir is a person who:
+    is a legitimate child of the previous ruler,
+    is an adult,
+    and is alive.</code></pre>
+                    <p>
+                        Then record these as properties under <em>Charlemagne</em> and <em>Carloman I</em>. I do not
+                        need to say "Oh by the way, these two are eligible heirs to the throne", my reasoner will do
+                        that for me. And my reasoner could also infer a succession crisis is soon to follow from this
+                        if these two exist at the same time...
+                    </p>
+                    <p class="takeaway">
+                        I am <em>not</em> writing an <code>if</code> statement for every individual in the world.
+                        I define the concepts and relationships, and ask <em>what comes next.</em>
+                    </p>
+                    <p>
+                        <em>Soufflé</em> is a super cool example of the evaluation engine I want to emulate. It's a
+                        statically typed Datalog system, so you declare some typed relations, supply facts, etc.
+                        and then write out the rules that derive other relations. Its type checker then checks how
+                        certain relational attributes are used in said rules. Let's continue with the previous example:
+                    </p>
+                    <pre><code>Facts:
+    Adult(Charlemagne)
+    Alive(Charlemagne)
+    LegitimateChild(Charlemagne, PepinTheShort)
+
+    Adult(CarlomanI)
+    Alive(CarlomanI)
+    LegitimateChild(CarlomanI, PepinTheShort)
+
+Rule:
+    A living adult legitimate child of Pepin the Short
+    is eligible for the Crown of the Franks.</code></pre>
+                    <p>
+                        With both heirs satisfying the rule, this yields:
+                    </p>
+                    <pre><code>Eligible(Charlemagne, CrownOfTheFranks)
+Eligible(CarlomanI, CrownOfTheFranks)</code></pre>
+                    <p>
+                        But the key here is that we want a good interpretive structure for this:
+                        <em>a user needs to be able to inspect the properties here!</em> You can
+                        imagine something like:
+                    </p>
+                    <pre><code>Eligible(Charlemagne, CrownOfTheFranks)
+    │
+    └── Succession rule R1
+            ├── Adult(Charlemagne)
+            ├── Alive(Charlemagne)
+            └── LegitimateChild(Charlemagne, PepinTheShort)</code></pre>
                 </section>
 
                 <section id="type-system">
                     <h2>The Type System</h2>
                     <p>
-                        [Explain what a type means in WMM and why you chose this
-                        model. Define any terminology the reader needs before
-                        getting into the details.]
+                        To be clear I am not referring to the TypeScript Interface.
                     </p>
 
                     <h3>Core Types and Relationships</h3>
                     <p>
-                        [Introduce the fundamental types and how they relate or
-                        compose. Use one small example that you can carry through
-                        the rest of the post.]
+                        Fundamentally, there are only 2 things: things in the world and claims about things in the world.
+                        You learn the first in grade school (hint, hint, starts with an n and rhymes with "neopronoun") but
+                        the second is really just an assertion. However, assertions should have a source and links to related
+                        records.
                     </p>
-                    <pre><code>[Minimal type definition]
-[An instance of that type]
-[A relationship or composition example]</code></pre>
+                    <pre><code>Descriptors:
+    Charlemagne       : Person
+    CrownOfTheFranks   : Office
+
+Relationship definition:
+    holdsOffice(Person, Office)
+
+Assertion:
+    Charlemagne holdsOffice CrownOfTheFranks
+        polarity: positive
+        time: [100, 110)
+        account: canonical
+        jurisdiction: France
+        recognition: De Jure</code></pre>
                     <p>
-                        [Walk through the example. Explain what each part means
-                        and which details are important to the design.]
+                        A "king" is generally an office held for life, but it's not a permanent property attachment.
+                        It's a relationship to an occupation, under a specific context, particularly scoped. For example:
+                    </p>
+                    <ol class="counterpoints">
+                        <li>A coup could occur.</li>
+                        <li>
+                            A movement could begin that installs a court that does not
+                            respect the legitimacy of the Frankish Crown.
+                        </li>
+                        <li>A chronicler could be wrong!</li>
+                    </ol>
+                    <p>
+                        These tidbits add life to a world. Events are almost identical as any accession gets an identity,
+                        assertions describe the participants, place, time, and any established downstream effects. The claim
+                        "language" has two very basic forms: an <code>Atom</code>, for a particular property or relationship,
+                        and <code>Exists</code>, for whether anyone in a specified population satisfies a criterion.
+                        Both have positive and negative forms.
                     </p>
 
                     <h3>Rules and Validation</h3>
                     <p>
-                        [Explain which rules the type system enforces and when
-                        they are checked. What is accepted, what is rejected,
-                        and what feedback does the author receive?]
+                        Rules and validating are simple, but I should clarify that malformed statements are not "inconvenient"
+                        statements. Consider:
                     </p>
-                    <pre><code>[Valid example]
-[Invalid example]
-[The resulting validation error]</code></pre>
+                    <pre><code>Well-formed:
+    holdsOffice(Charlemagne, CrownOfTheFranks)
+
+Wrong subject type:
+    holdsOffice(RoyalPalace, CrownOfTheFranks)
+
+Illustrative diagnostic:
+    holdsOffice expects a Person as its subject.
+    RoyalPalace is a Place.</code></pre>
+                    <p>
+                        Resolving this requires us to look at the institution, succession, claims, etc. More generally, the engine
+                        needs to surface this class of error as almost a question rather than a violation. What kind of problem did
+                        it find? What did it rely on? What do I need to change in order to reconcile this?
+                    </p>
                 </section>
 
                 <section id="world-engine">
                     <h2>The World Engine</h2>
                     <p>
-                        [Introduce the engine's responsibilities. What does it
-                        take as input, what does it keep track of, and what does
-                        it produce?]
+                        I give the engine a snapshot of my world at a point in time, some definitions
+                        and a proposal. The proposal could be a question, a request or even just a comment.
+                        The engine needs to evaluate the parts of that proposal the model actually expresses.
+                        <em>It is not "simulating" anything.</em> I am giving it some premises and asking it
+                        to draw a conclusion.
                     </p>
 
                     <h3>Representing a World</h3>
                     <p>
-                        [Describe how world state is represented and how it uses
-                        the types introduced above. Explain the distinction
-                        between a definition and a live instance, if applicable.]
+                        I will be clear: I am hand waving a decent chunk of logic under the magical property
+                        of <code>Prose</code>. Prose is whatever is too hard or too complicated or too abstract
+                        to encode. Obviously, as the engine evolves it will get harder to add to prose but this
+                        is the main driving force behind me adding an agent harness: an LLM would do a pretty
+                        good job as a... World Engine Consultant?
                     </p>
-                    <pre><code>[A minimal world definition or state snapshot]</code></pre>
+                    <pre><code>World snapshot
+    Definitions and their versions
+    Entity, event, and period descriptors
+    Assertion catalog and active assertion IDs
+    Sources and support records
+    Authored prose</code></pre>
+                    <p>
+                        Definitions establish the vocabulary we use to describe the world, whereas descriptors
+                        identify particular things. Everything else is rehashed. A small point I should clarify:
+                        we are tracking revision time of the "Git history" I talked about in the intro as well
+                        as event time. I, for one, retcon a decent amount and tracking these "parallel timelines"
+                        is a particularly desirable feature for me. The other thing is the UI: if the engine
+                        establishes something from existing premises, I want an inspectable result where I can
+                        click around and investigate and even debug.
+                    </p>
 
                     <h3>Execution and State Changes</h3>
                     <p>
-                        [Explain how the engine processes an action, event, or
-                        update. Describe the order of operations and how it keeps
-                        the world consistent.]
+                        Authoring is simple (and needs to remain simple).
                     </p>
-                    <ol>
-                        <li>[What starts an update?]</li>
-                        <li>[What rules or constraints are evaluated?]</li>
-                        <li>[How is the resulting state applied or reported?]</li>
-                    </ol>
-
-                    <details class="system-note">
-                        <summary>Implementation Notes</summary>
-                        <p>
-                            [Optional deeper dive: explain an internal data
-                            structure, execution detail, or edge case without
-                            interrupting the main explanation. Remove this block
-                            if it is not needed.]
-                        </p>
-                    </details>
+                    <pre><code>Propose changes
+    → assemble a candidate snapshot
+    → validate and explain the candidate
+    → let the author revise the selection
+    → approve that exact candidate
+    → commit against the expected base</code></pre>
+                    <p>
+                        I want to be able to draft these as well, and approve whatever seems interesting to me.
+                        Branches specifically play a large part here, so I can jump around and figure out what
+                        works well for the "canon".
+                    </p>
                 </section>
 
                 <section id="worked-example">
                     <h2>A Worked Example</h2>
                     <p>
-                        [Bring the type system and world engine together in one
-                        small scenario. State the starting conditions and what
-                        you want to happen.]
+                        Let's close out the story of Charlemagne and Carloman. Obviously, we have 2 heirs.
+                        But how do we select a winner. Well, if I have a clear plot in mind I could obviously
+                        just submit a proposal that selects Charlemagne and be done with it. But what if this
+                        is purely for world building? After all... does there need to be a crisis at all?
                     </p>
-                    <pre><code>[Starting world state]
-[Input or action]
-[Relevant type checks or rules]
-[Resulting world state or output]</code></pre>
                     <p>
-                        [Walk through the result. What did the type system
-                        guarantee, and what did the engine do? Show a failure
-                        case too, if it helps explain the boundary between them.]
+                        THIS is where the agent belongs in this application. It could retrieve the succession rules,
+                        existing factions, prior disputes, and neighboring states, then propose a coup, a council
+                        settlement, or even a partition! Better yet, it could use Wikipedia, realize that perhaps
+                        I was heavily inspired by real life events and propose a realistic finale! Those are possible
+                        developments which go beyond simple deductions.
+                    </p>
+                    <figure class="cli">
+                        <figcaption class="cli-header">
+                            <span>WMM</span>
+                            <span>User input</span>
+                        </figcaption>
+                        <div class="cli-command">
+                            <span class="cli-prompt" aria-hidden="true">❯</span>
+                            <kbd class="cli-input">Sustain the de jure succession laws. Quell any possible rebellion, based on positive sentiment
+                                and current success. The top 10 most powerful nobles negotiate a "plea deal" that quietly
+                                sidelines Carloman.</kbd>
+                        </div>
+                    </figure>
+                    <p>
+                        This should draft a new proposal, that I can review and verify myself. If I like it,
+                        I'll add it to the canon. If not, well poor Charlemagne. I do think the most interesting thing here
+                        is that you can see a clear open-world distinction: missing information does not
+                        automatically make a proposition false. This is the axiom that creates the concept of "open-world".
+                        Furthermore, I need a way to port my world into this system... and I am not doing that by hand.
                     </p>
                 </section>
 
                 <section id="trade-offs">
                     <h2>Design Trade-offs</h2>
                     <p>
-                        [Discuss a decision that was not obvious. What
-                        alternatives did you consider, why did you choose this
-                        approach, and what does it cost?]
+                        Something something something.
                     </p>
-                    <ul>
-                        <li>[What works well in the current design?]</li>
-                        <li>[What limitation or open question remains?]</li>
-                        <li>[What would you change with hindsight?]</li>
-                    </ul>
                 </section>
 
                 <section id="next-steps">
                     <h2>What Comes Next</h2>
                     <p>
-                        [Summarize the main idea you want the reader to take
-                        away. Distinguish what is implemented today from what
-                        you plan to build next.]
-                    </p>
-                    <p>
-                        [Add links to the source code, documentation, a demo, or
-                        a follow-up post when they are ready.]
+                        Just gotta chug along. I'll probably update this when V1 drops!
                     </p>
                 </section>
             </article>
